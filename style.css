@@ -1,0 +1,21 @@
+table, th, td {
+  border: 1px solid black;
+}
+td {
+    height: 130px;
+    width: 130px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    
+    font-size:22px;
+}
+
+body {
+    
+    font-family: sans-serif;
+    text-align: center;
+    
+}
