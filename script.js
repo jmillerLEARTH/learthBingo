@@ -51,7 +51,9 @@ function participantCountPage() {
         <input type="checkbox" id="expandedNumbersContent" name="expandedNumbersContent" value="expandedNumbers">
         <label for="expandedNumbersContent"> Expanded (11-50) numbers included</label><br><br>
         
-         
+        <input type="checkbox" id="fiftyOneSeventyFiveEng" name="fiftyOneSeventyFiveEng" value="fiftyOneSeventyFiveEng">
+        <label for="fiftyOneSeventyFiveEng"> 51-75 English only included</label><br><br>
+
         <b><u>Bingo Card Lanuages</b></u><br>
         
         <input type="checkbox" id="ojbCardAllowed" name="ojbCardAllowed" value="Ojibwe">
@@ -147,8 +149,34 @@ var expandedNumberContentArray =
     [49, "niimidana shaa zhaangaswi"],
     [50, "naa-nimidana"],
     ]
-    
-
+var englishOnlyNumberContentArray =   
+    [
+    [51],
+    [52],
+    [53],
+    [54],
+    [55],
+    [56],
+    [57],
+    [58],
+    [59],
+    [60],
+    [61],
+    [62],
+    [63],
+    [64],
+    [65],
+    [66],
+    [67],
+    [68],
+    [69],
+    [70],
+    [71],
+    [72],
+    [73],
+    [74],
+    [75]
+    ]
 var englishOnlyNumberContentArray = 
     [
     [101],
@@ -307,6 +335,12 @@ function loadSelectedContentArrays()    {
         destructoSelectedArray = destructoSelectedArray.concat(expandedNumberContentArray);
         contentStringArray.push("Expanded#");
         
+    }
+    
+    if(document.getElementById("fiftyOneSeventyFiveEng").checked){
+        
+        destructoSelectedArray = destructoSelectedArray.concat(englishOnlyNumberContentArray);
+        contentStringArray.push("51-75Eng#");
     }
     
     if(destructoSelectedArray.length < 50) {
