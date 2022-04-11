@@ -1,3 +1,4 @@
+//import {PlayLangSound} from "./indigLangSounds.js";
 
 // Header set selection checkbox buttons for different category columns -- randomize it like the content
 
@@ -30,6 +31,13 @@ class destroArray{
 }
 
 function participantCountPage() {
+    
+    const testAudio = new Audio("https://s3.amazonaws.com/ojibwe-audio-transcoded/boozhoo__ij__gp68049_2.mp4");
+    testAudio.playbackRate = 0.5;
+    testAudio.play();
+    
+    //PlayLangSound(test,test);
+    
     document.getElementById("mainContent").style = "font-size:26px;margin-top:75px";
     document.getElementById("mainContent").innerHTML = `
         <form><label for="count">Participants:</label><input type="text" id="partCount" style="font-size:26px;width:75px"></form>
@@ -292,7 +300,7 @@ var nishContentArray =
     ["To recover or heal","Noojimo"],
     ];
 
-var selectedContentArray = numberContentArray;
+//var selectedContentArray = numberContentArray;
 
 //load the selectedContentArray into the individual column arrays
 
