@@ -1,13 +1,8 @@
-import {langHandler} from "./indigLangSounds.js";
-import {InitOjibwemowin} from "./ojibwemowin.js";
+import {BuildLangs} from "./indigLangSounds/buildLangs.js";
 
 export function mainTest(){
     
-    const LH = new langHandler;
-    
-    const ojibwemowin = LH.AddLang("ojibwemowin","ojibwe");
-    
-    InitOjibwemowin(ojibwemowin);
+    const LH = BuildLangs();
 
     LH.PlayLangSound("ojibwemowin","bezhig");
     
