@@ -1,8 +1,10 @@
-import {BuildLangs} from "./indigLangSounds/buildLangs.js";
+import {langHandler} from "./indigLangSounds/indigLangSounds.js";
 
 export function mainTest(){
     
-    const LH = BuildLangs();
+    const LH = new langHandler();
+    
+    LH.InitiateLangs();
 
     LH.PlayLangSound("ojibwemowin","bezhig");
     

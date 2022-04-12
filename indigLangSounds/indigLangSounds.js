@@ -1,3 +1,5 @@
+import {InitLangs} from "./initLangs.js";
+
 export class soundFile{
     
     constructor(soundHandlerOwner,path){
@@ -79,6 +81,11 @@ export class langHandler {
         this.langs.push($lang);
         
         return $lang
+    }
+    
+    InitiateLangs(){
+        
+        InitLangs(this);
     }
     
     PlayLangSound(lang,phrase,langEngName=null,engPhrase=null){
