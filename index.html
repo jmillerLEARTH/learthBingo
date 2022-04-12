@@ -1,10 +1,20 @@
-<!---<script src="script.js"></script>
-</script><script type="module" src="indigLangSounds.js"></script>--->
-<script type="module" src="main.js"></script>
-
-
-
-<link rel="stylesheet" href="style.css">
-<div id="mainContent">
-    <button type="button" onclick="participantCountPage()" style="margin:50;font-size:30px">Play Bingo!</button><br><br>
-</div>
+<head>
+    <script type="module" >
+        import {mainTest,mainLangTest} from '/main.js';
+        window.mainTest = mainTest;
+        window.mainLangTest = mainLangTest;
+    </script>
+</head>
+ 
+ 
+ 
+ 
+<html>
+ 
+    <body>
+        Hello!
+ 
+        <button onclick="mainTest()">Click me</button>
+        <button onclick="mainLangTest()">Click me</button>
+    </body>
+</html>
