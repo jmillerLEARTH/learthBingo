@@ -1,4 +1,5 @@
 import {langHandler} from "./indigLangSounds/indigLangSounds.js";
+import {gameHandler} from "./bingo.js";
 
 export function mainTest(){
     
@@ -6,12 +7,9 @@ export function mainTest(){
     
     LH.InitiateLangs();
 
-    LH.PlayLangSound("ojibwemowin","bezhig");
+    const GH = new gameHandler(LH);
     
-//    const testAudio = new Audio("https://s3.amazonaws.com/ojibwe-audio-transcoded/bezhig_av____lw580143.mp4");
-//    console.log(testAudio);
-//    testAudio.playbackRate = 1;
-//    testAudio.play();	
+    GH.TestCall();
 
 }
 
