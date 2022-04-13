@@ -68,10 +68,8 @@ class callHandler {
         if(this.gameHandlerOwner.gameSettingsHandler.playAudioCalls){
             
             for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
-                
-                console.warn("callHandler.CallBall needs to be able to PlayLangSound from English ball.callText since the ball doesn't know the in-language name of the call")
-             
-                this.gameHandlerOwner.audioCallLibrary.PlayLangSound(l,ball.callText);
+                         
+                this.gameHandlerOwner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);
                 
             }
         }
@@ -91,7 +89,7 @@ export class gameHandler {
     TestCall(sound){
         
         const $ball = new ball();
-        $ball.callText = "bezhig";
+        $ball.callText = "one";
         this.gameSettingsHandler.gameCallLangs.push("ojibwemowin");
         this.callHandler.CallBall($ball);
     }

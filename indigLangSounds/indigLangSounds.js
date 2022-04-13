@@ -88,15 +88,24 @@ export class langHandler {
         InitLangs(this);
     }
     
-    PlayLangSound(lang,phrase,langEngName=null,engPhrase=null){
+    PlayLangSound(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
     
+        let $evalLangName;
+        let $evalPhrase;
+        
+        if(searchByEngLangName) $evalLangName = "langEngName"
+        else $evalLangName = "langName"
+        
+        if(searchByEngPhrase) $evalPhrase = "engPhrase"
+        else $evalPhrase = "phrase"
+        
         for(const l of this.langs){
-
-            if(l.langName == lang){
+            
+            if(l[$evalLangName] == lang){
 
                 for(const ph of l.phrases){
 
-                    if(ph.phrase == phrase){
+                    if(ph[$evalPhrase] == phrase){
 
                         ph.soundHandler.PlaySounds();
                     }
