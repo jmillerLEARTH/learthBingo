@@ -20,5 +20,7 @@ export class uiHandler {
     
     DisplayCallPage(){
         
+        document.getElementById("mainContent").style = "font-size:26px;margin-top:75px";
+        document.getElementById("mainContent").innerHTML = callPageHTMLString;
     }
 }

@@ -1,98 +1,6 @@
 import {uiHandler} from "./uiHandler.js";
+import {ballHandler} from "./ballHandler.js";
 
-class ball {
-    
-    constructor(cardText,callText){
-        
-        this.cardText = cardText;
-        this.callText = callText;
-        this.pullSeed = null;
-    }
-}
-
-class ballHandler {
-    
-    constructor(gameHandlerOwner){
-        
-        this.gameHandlerOwner = gameHandlerOwner;
-        this.balls = [];
-        this.pulledBalls = [];
-        this.pullSeeds = [];
-        
-    }
-    
-    LoadBallsXToY(x,y){
-        
-        for(let i=x; i<y+1; i++){
-            
-            this.LoadNewBall(i,i);
-        }
-        
-    }
-    
-    LoadNewBall(cardText,callText){
-        
-        let $ball = new ball(cardText,callText);
-        this.balls.push($ball);
-    }
-    
-    ReturnAllPulledBalls(){
-        
-        for(const b of this.pulledBalls){
-            
-            this.balls.push[b];
-        }
-        
-        this.pulledBalls = [];
-    }
-    
-    _AssignBallSeeds(){
-        
-        this.pullSeeds = [];
-        
-        for(const b of this.balls){
-            
-            let $seed = Math.random();
-            b.pullSeed = $seed;
-            this.pullSeeds.push($seed);
-        }
-    }
-    
-    _GetHighestPullSeedBall(){
-        
-        for(const b of this.balls){
-            
-            if(b.pullSeed == Math.max(...this.pullSeeds)) return b
-        }
-    }
-    
-    PullBall(){
-        
-        this._AssignBallSeeds();
-        
-        let $pulledBall = this._GetHighestPullSeedBall();
-        
-        this.balls = this.balls.filter((e) => e != $pulledBall);
-        
-        this.pulledBalls.push($pulledBall);
-        
-        console.log($pulledBall);
-        console.log(this.balls);
-        console.log(this.pulledBalls);
-        
-    }
-    
-    CallBall(ball){
-        
-        if(this.gameHandlerOwner.gameSettingsHandler.playAudioCalls){
-            
-            for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
-                         
-                this.gameHandlerOwner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
-            }
-        }   
-    }
-}
 
 class prevCallHandler {
     
@@ -128,23 +36,9 @@ class gameSettingsHandler{
         this.AddGameCallLang("ojibwemowin");
         this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,50);
         
-        this.gameHandlerOwner.ballHandler.PullBall();
+        this.gameHandlerOwner.uiHandler.DisplayCallPage();
     }
 }
-        
-//class callHandler {
-//
-//    constructor(gameHandlerOwner){
-//        
-//        this.gameHandlerOwner = gameHandlerOwner;
-//    }
-//    
-////    PullBall(){
-////        
-////    }
-//    
-//
-//}
 
 export class gameHandler {
     
@@ -152,6 +46,7 @@ export class gameHandler {
         
         this.gameSettingsHandler = new gameSettingsHandler(this);
         this.ballHandler = new ballHandler(this);
+        this.cardHandler = new cardHandler(this);
         this.uiHandler = new uiHandler(this);
         this.audioCallLibrary = audioCallLibrary;
     }
@@ -199,10 +94,6 @@ class card {
         
     }
     
-    SetHeaders(){
-        
-    }
-    
     AssignSpace(x,y,content){
         
         let $space = new cardSpace(x,y,content);
@@ -210,29 +101,17 @@ class card {
     }
 }
 
-class cardPrinterHandler {
-    
-    constructor(cardHandlerOwner){
-        
-        this.cardHandlerOwner = cardHandlerOwner;
-    }
-    
-    DisplayCardsToPrint(){
-        
-        for(const card of this.cardHandlerOwner.cards){
-            
-            
-        }
-    }
-}
-
 class cardHandler {
     
-    constructor(){
+    constructor(gameHandlerOwner){
         
+        this.gameHandlerOwner = gameHandlerOwner;
         this.cards = [];
-     
-        this.cardPrinterHandler = new cardPrinterHandler(this);
+
+    }
+    
+    SetHeaders(){
+        
     }
     
     GenerateCard(){
