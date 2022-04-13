@@ -1,3 +1,5 @@
+import {uiHandler} from "./uiHandler.js";
+
 class ball {
     
     constructor(cardText,callText){
@@ -97,6 +99,7 @@ export class gameHandler {
         
         this.gameSettingsHandler = new gameSettingsHandler(this);
         this.ballHandler = new ballHandler(this);
+        this.uiHandler = new uiHandler(this);
         this.audioCallLibrary = audioCallLibrary;
     }
     
