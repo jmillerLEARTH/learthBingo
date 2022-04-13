@@ -1,5 +1,5 @@
 import {langHandler} from "./indigLangSounds/indigLangSounds.js";
-import {gameHandler} from "./bingo.js";
+import {gameHandler} from "./bingo/bingo.js";
 
 export function mainTest(){
     
@@ -9,7 +9,7 @@ export function mainTest(){
 
     const GH = new gameHandler(LH);
     
-    GH.TestCall();
+    GH.uiHandler.DisplayGameSettingsPage();
 
 }
 

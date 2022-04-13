@@ -6,6 +6,7 @@ class ball {
         
         this.cardText = cardText;
         this.callText = callText;
+        this.pullSeed = null;
     }
 }
 
@@ -15,6 +16,8 @@ class ballHandler {
         
         this.gameHandlerOwner = gameHandlerOwner;
         this.balls = [];
+        this.pulledBalls = [];
+        this.pullSeeds = [];
         
     }
     
@@ -33,7 +36,49 @@ class ballHandler {
         this.balls.push($ball);
     }
     
+    ReturnAllPulledBalls(){
+        
+        for(const b of this.pulledBalls){
+            
+            this.balls.push[b];
+        }
+        
+        this.pulledBalls = [];
+    }
+    
+    _AssignBallSeeds(){
+        
+        this.pullSeeds = [];
+        
+        for(const b of this.balls){
+            
+            let $seed = Math.random();
+            b.pullSeed = $seed;
+            this.pullSeeds.push($seed);
+        }
+    }
+    
+    _GetHighestPullSeedBall(){
+        
+        for(const b of this.balls){
+            
+            if(b.pullSeed == Math.max(...this.pullSeeds)) return b
+        }
+    }
+    
     PullBall(){
+        
+        this._AssignBallSeeds();
+        
+        let $pulledBall = this._GetHighestPullSeedBall();
+        
+        this.balls = this.balls.filter((e) => e != $pulledBall);
+        
+        this.pulledBalls.push($pulledBall);
+        
+        console.log($pulledBall);
+        console.log(this.balls);
+        console.log(this.pulledBalls);
         
     }
     
@@ -73,9 +118,17 @@ class gameSettingsHandler{
         this.gameCallLangs = [];
     }
     
-    AddGameCallLang(lang){
+    AddGameCallLang(lang){ //takes a string
         
         this.gameCallLangs.push(lang);
+    }
+    
+    ContinueWithQuickGameSettings(){
+        
+        this.AddGameCallLang("ojibwemowin");
+        this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,50);
+        
+        this.gameHandlerOwner.ballHandler.PullBall();
     }
 }
         
@@ -103,6 +156,13 @@ export class gameHandler {
         this.audioCallLibrary = audioCallLibrary;
     }
     
+    StartGame(){
+        
+        this.audioCallLibrary.InitiateLangs();
+    
+        this.uiHandler.DisplayGameSettingsPage();
+    }
+    
     TestCall(sound){
         
         this.ballHandler.LoadBallsXToY(1,50);
@@ -112,6 +172,11 @@ export class gameHandler {
         $ball.callText = "two";
         this.gameSettingsHandler.gameCallLangs.push("ojibwemowin");
         this.ballHandler.CallBall($ball);
+    }
+    
+    WindowTest(){
+        console.log("window");
+        console.log(this);
     }
 }
 

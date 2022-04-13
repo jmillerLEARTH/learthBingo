@@ -10,6 +10,8 @@ export class uiHandler {
     
     DisplayGameSettingsPage(){
         
+        document.getElementById("mainContent").style = "font-size:26px;margin-top:75px";
+        document.getElementById("mainContent").innerHTML = gameSettingsPageHTMLString;
     }
     
     DisplayCardPrintPage(){

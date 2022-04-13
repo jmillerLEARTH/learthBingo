@@ -1,12 +1,18 @@
+<HTML>
 <head>
     <script type="module" >
-        import {mainTest} from '/main.js';
-        window.mainTest = mainTest;
+        import {langHandler} from '/indigLangSounds/indigLangSounds.js';
+        window.langHandler = new langHandler();
+    </script>
+    <script type="module" >
+        import {gameHandler} from '/bingo/bingo.js';
+        window.gameHandler = new gameHandler(window.langHandler);
     </script>
 </head>
  
 <body>
     <div id="mainContent">
-        <button onclick="mainTest()">Click me</button>
+        <button onclick="gameHandler.StartGame()">Play Bingo!</button>
     </div>
 </body>
+</HTML>
