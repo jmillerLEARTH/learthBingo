@@ -151,6 +151,9 @@ class cardHandler {
         
         console.warn("assigned spaces are not sorted so you might have 1 and 52 in the same column");
         
+        //determine how evenly the total number of balls divides into 5 and then put them into header0Bucket, header1Bucket, etc.
+        //and draw out of those
+        
         for(let i=0; i<num+1; i++){
             
             let $card = new card(this);
