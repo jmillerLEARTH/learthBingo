@@ -1,24 +1,49 @@
 class ball {
     
-    constructor(){
+    constructor(cardText,callText){
         
-        ball.cardText;
-        ball.callText;
-        ball.soundFunction;
+        this.cardText = cardText;
+        this.callText = callText;
     }
 }
 
 class ballHandler {
     
-    constructor(){
+    constructor(gameHandlerOwner){
         
-        balls = [];
+        this.gameHandlerOwner = gameHandlerOwner;
+        this.balls = [];
         
     }
     
-    LoadNewBall(){
+    LoadBallsXToY(x,y){
         
+        for(let i=x; i<y+1; i++){
+            
+            this.LoadNewBall(i,i);
+        }
         
+    }
+    
+    LoadNewBall(cardText,callText){
+        
+        let $ball = new ball(cardText,callText);
+        this.balls.push($ball);
+    }
+    
+    PullBall(){
+        
+    }
+    
+    CallBall(ball){
+        
+        if(this.gameHandlerOwner.gameSettingsHandler.playAudioCalls){
+            
+            for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
+                         
+                this.gameHandlerOwner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
+            }
+        }   
     }
 }
 
@@ -52,46 +77,38 @@ class gameSettingsHandler{
     }
 }
         
-class callHandler {
-
-    constructor(gameHandlerOwner){
-        
-        this.gameHandlerOwner = gameHandlerOwner;
-    }
-    
-    PullBall(){
-        
-    }
-    
-    CallBall(ball){
-        
-        if(this.gameHandlerOwner.gameSettingsHandler.playAudioCalls){
-            
-            for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
-                         
-                this.gameHandlerOwner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);
-                
-            }
-        }
-        
-    }
-}
+//class callHandler {
+//
+//    constructor(gameHandlerOwner){
+//        
+//        this.gameHandlerOwner = gameHandlerOwner;
+//    }
+//    
+////    PullBall(){
+////        
+////    }
+//    
+//
+//}
 
 export class gameHandler {
     
     constructor(audioCallLibrary){
         
         this.gameSettingsHandler = new gameSettingsHandler(this);
-        this.callHandler = new callHandler(this);
+        this.ballHandler = new ballHandler(this);
         this.audioCallLibrary = audioCallLibrary;
     }
     
     TestCall(sound){
         
+        this.ballHandler.LoadBallsXToY(1,50);
+        console.log(this.ballHandler.balls);
+        
         const $ball = new ball();
-        $ball.callText = "one";
+        $ball.callText = "two";
         this.gameSettingsHandler.gameCallLangs.push("ojibwemowin");
-        this.callHandler.CallBall($ball);
+        this.ballHandler.CallBall($ball);
     }
 }
 
