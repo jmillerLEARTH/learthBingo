@@ -4,7 +4,12 @@ class ball {
         
         this.cardText = cardText;
         this.callText = callText;
+        this.header;
         this.pullSeed = null;
+    }
+    
+    SetHeader(header){
+        this.header = header;
     }
 }
 
@@ -64,7 +69,7 @@ export class ballHandler {
         }
     }
     
-    PullBall(){
+    PullBall(forCall=true){
         
         this._AssignBallSeeds();
         
@@ -74,11 +79,13 @@ export class ballHandler {
         
         this.pulledBalls.push($pulledBall);
         
-        console.log($pulledBall);
-        console.log(this.balls);
-        console.log(this.pulledBalls);
+        //console.log($pulledBall);
+        //console.log(this.balls);
+        //console.log(this.pulledBalls);
         
-        this.CallBall($pulledBall);
+        if(forCall) this.CallBall($pulledBall);
+        
+        return $pulledBall
         
     }
     

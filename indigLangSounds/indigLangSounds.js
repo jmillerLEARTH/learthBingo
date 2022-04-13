@@ -31,7 +31,6 @@ export class soundHandler{
             console.warn("currently will only work with single sound phrases");
 
             const $tempAudio = new Audio(snd.path);
-            $tempAudio.volume = snd.volume;
             $tempAudio.play()
 
         }

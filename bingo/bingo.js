@@ -34,7 +34,12 @@ class gameSettingsHandler{
     ContinueWithQuickGameSettings(){
         
         this.AddGameCallLang("ojibwemowin");
+        
         this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,50);
+        
+        this.gameHandlerOwner.cardHandler.SetHeaders("bear","bird","marten","deer","loon");
+        
+        this.gameHandlerOwner.cardHandler.GenerateCards(3);
         
         this.gameHandlerOwner.uiHandler.DisplayCallPage();
     }
@@ -77,8 +82,9 @@ export class gameHandler {
 
 class cardSpace {
     
-    constructor(x,y,content){
+    constructor(cardOwner,x,y,content){
         
+        this.cardOwner = cardOwner;
         this.x = x;
         this.y = y;
         this.content = content;
@@ -87,17 +93,38 @@ class cardSpace {
 
 class card {
     
-    constructor(){
+    constructor(cardHandlerOwner){
         
+        this.cardHandlerOwner = cardHandlerOwner;
+        this.nextXPlace = 0;
+        this.nextYPlace = 0;
         this.spaces = [];
-        this.headers = [];
         
     }
     
-    AssignSpace(x,y,content){
+    AssignSpace(){
         
-        let $space = new cardSpace(x,y,content);
+        let $pulledBall = this.cardHandlerOwner.gameHandlerOwner.ballHandler.PullBall(false);
+        
+        console.log($pulledBall);
+        
+        $pulledBall.SetHeader(this.cardHandlerOwner.headers[this.nextYPlace]);
+        
+        let $space = new cardSpace(this,this.nextXPlace,this.nextYPlace,$pulledBall.cardText);
         this.spaces.push($space);
+        
+        this._MoveToNextYPlace();
+    }
+    
+    _MoveToNextYPlace(){
+    
+        this.nextYPlace++;
+        
+        if(this.nextYPlace == 5){
+            
+            this.nextXPlace++;
+            this.nextYPlace = 0;
+        }
     }
 }
 
@@ -107,16 +134,37 @@ class cardHandler {
         
         this.gameHandlerOwner = gameHandlerOwner;
         this.cards = [];
+        this.headers = [];
 
     }
     
-    SetHeaders(){
+    SetHeaders(hdr0,hdr1,hdr2,hdr3,hdr4){
         
+        this.headers.push(hdr0);
+        this.headers.push(hdr1);
+        this.headers.push(hdr2);
+        this.headers.push(hdr3);
+        this.headers.push(hdr4);
     }
     
-    GenerateCard(){
+    GenerateCards(num){
         
-        //check to make sure card has standard number of spaces
+        console.warn("assigned spaces are not sorted so you might have 1 and 52 in the same column");
+        
+        for(let i=0; i<num+1; i++){
+            
+            let $card = new card(this);
+            
+            for(let s=0; s<51; s++){
+                
+                $card.AssignSpace();
+            }
+            
+            this.gameHandlerOwner.ballHandler.ReturnAllPulledBalls();
+        }
+        
+        console.log(this);
+        console.log(this.gameHandlerOwner.ballHandler);
     }
 }
 
