@@ -88,8 +88,8 @@ export class langHandler {
         InitLangs(this);
     }
     
-    PlayLangSound(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
-    
+    _FindMatchingPhrase(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
+        
         let $evalLangName;
         let $evalPhrase;
         
@@ -105,14 +105,33 @@ export class langHandler {
 
                 for(const ph of l.phrases){
 
-                    if(ph[$evalPhrase] == phrase){
-
-                        ph.soundHandler.PlaySounds();
-                    }
+                    if(ph[$evalPhrase] == phrase) return ph
                 }
             }
         }
-    }   
+    }
+    
+    PlayLangSound(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
+
+        this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase).soundHandler.PlaySounds();
+                
+    }
+    
+    GetSoundPaths(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
+        
+        let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
+        
+        console.log($phrase);
+        
+        let $returnArr = [];
+        
+        for(const snd of $phrase.soundHandler.sounds){
+            
+            $returnArr.push(snd.path);
+        }
+        
+        return $returnArr
+    }
 }
 
 

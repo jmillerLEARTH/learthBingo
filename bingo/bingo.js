@@ -43,6 +43,8 @@ class gameSettingsHandler{
         this.gameHandlerOwner.cardHandler.GenerateCards(3);
         
         this.gameHandlerOwner.uiHandler.DisplayCallPage();
+        
+        this.gameHandlerOwner.ballHandler.SortBallsBySeed();
     }
 }
 

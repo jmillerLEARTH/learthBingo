@@ -93,10 +93,6 @@ export class cardHandler {
     
     _AssignHeadersToBalls(balls){
         
-        // assign header prop and header index prop to ball based on sorted seed and make a copy of that ball to put into the header bucket
-        // let cardhandler also have a ballhandler -- use SortBallsBySeed() and just pull X out for each seed (continue on non-compliant header index)
-        // iterate through based on $headerIndex
-        
         let $minBallsPerBucket = balls.length/5;
         let $currentHeaderIndex = 0;
         let $ballsAssignedToCurrentIndex = 0;
@@ -130,14 +126,11 @@ export class cardHandler {
         
         this._AssignHeadersToBalls(this.gameHandlerOwner.ballHandler.balls);
         
-        //determine how evenly the total number of balls divides into 5 and then put them into header0Bucket, header1Bucket, etc.
-        //and draw out of those
-        
         for(let i=0; i<num; i++){
             
             let $card = new card(this);
             
-            if(this.ballHandler.GetNumBallsRemaining() < 50) console.warn("empty")
+            if(this.ballHandler.GetNumBallsRemaining() < 50) console.warn("my ballHandler has insufficient balls to draw")
         
             this.ballHandler.SortBallsBySeed();
 
@@ -154,6 +147,6 @@ export class cardHandler {
         }
         
         console.log(this);
-        //console.log(this.gameHandlerOwner.ballHandler);
+        console.log(this.gameHandlerOwner.ballHandler);
     }
 }

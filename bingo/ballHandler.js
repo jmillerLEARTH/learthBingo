@@ -1,3 +1,5 @@
+import {PlaySequentialSounds} from "./../soundUtil.js";
+
 class ball {
     
     constructor(cardText,callText){
@@ -101,7 +103,7 @@ export class ballHandler {
         
         this.pulledBalls.push($pulledBall);
         
-        //console.log($pulledBall);
+        console.log($pulledBall);
         //console.log(this.balls);
         //console.log(this.pulledBalls);
         
@@ -115,10 +117,30 @@ export class ballHandler {
         
         if(this.owner.gameSettingsHandler.playAudioCalls){
             
+            let $sounds = [];
+            
             for(const l of this.owner.gameSettingsHandler.gameCallLangs){
-                         
-                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
+                
+                let $headerSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.header,false,true);
+                
+                for(const hs of $headerSounds){
+                    
+                    $sounds.push(hs);
+                }
+                
+                let $callSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.callText,false,true);
+                
+                for(const cs of $callSounds){
+                    
+                    $sounds.push(cs);
+                }
+//                         
+//                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
             }
+            
+            console.log($sounds);
+            
+            PlaySequentialSounds($sounds);
         }   
     }
 }
