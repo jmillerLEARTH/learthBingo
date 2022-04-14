@@ -103,7 +103,7 @@ export class ballHandler {
         
         this.pulledBalls.push($pulledBall);
         
-        console.log($pulledBall);
+        //console.log($pulledBall);
         //console.log(this.balls);
         //console.log(this.pulledBalls);
         
@@ -123,22 +123,26 @@ export class ballHandler {
 
             let $headerSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.header,false,true);
 
-            for(const hs of $headerSounds){
+            if($headerSounds != false){
+                for(const hs of $headerSounds){
 
-                $sounds.push(hs);
+                    $sounds.push(hs);
+                }
             }
 
             let $callSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.callText,false,true);
 
-            for(const cs of $callSounds){
+            if($callSounds != false){
+                for(const cs of $callSounds){
 
-                $sounds.push(cs);
+                    $sounds.push(cs);
+                }
             }
 //                         
 //                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
         }
 
-        console.log($sounds);
+        //console.log($sounds);
         
         if(this.owner.gameSettingsHandler.playAudioCalls){    
             PlaySequentialSounds($sounds,this.owner);

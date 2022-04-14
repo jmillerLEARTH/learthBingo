@@ -73,7 +73,7 @@ export class gameHandler {
         
         if(confirm("Are you ready to call?")){
             
-            console.log(this);
+            //console.log(this);
         
             this.gameHandler.uiHandler.DisplayCallPage();
         

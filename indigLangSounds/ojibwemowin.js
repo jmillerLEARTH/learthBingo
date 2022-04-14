@@ -40,10 +40,146 @@ export function InitOjibwemowin(ojibwemowin){
         .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niswi__qnt__sp67490.mp4");
     
     ojibwemowin.AddPhrase("ashi-niiwin", "14")
-        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niiwin__qnt__sp67490.mp4");
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niiwin__qnt__gp68005_3.mp4");
     
-     ojibwemowin.AddPhrase("ashi-naanan", "15")
-        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-naanan__qnt__sp67490.mp4");
+    ojibwemowin.AddPhrase("ashi-naanan", "15")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-naanan__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("ashi-ningodwaaswi", "16")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ningodwaaswi__qnt__nj61006_0.mp4");
+    
+    ojibwemowin.AddPhrase("ashi-niizhwaaswi", "17")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niizhwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("ashi-ishwaaswi", "18")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ishwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("ashi-zhaangaswi", "19")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi__ta_mi_2s-3__sp65284_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/zhaangaswi_av____gh580143.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana", "20")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-bezhig", "21")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-bezhig__qnt__sp67490.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-niizh", "22")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niizh__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-niswi", "23")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niswi__qnt__sp67490.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-niiwin", "24")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niiwin__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-naanan", "25")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-naanan__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-ningodwaaswi", "26")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ningodwaaswi__qnt__nj61006_0.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-niizhwaaswi", "27")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niizhwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-ishwaaswi", "28")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ishwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niishtana ashi-zhaangaswi", "29")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niishtana__qnt__nj61006_0.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi__ta_mi_2s-3__sp65284_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/zhaangaswi_av____gh580143.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana", "30")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-bezhig", "31")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-bezhig__qnt__sp67490.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-niizh", "32")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niizh__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-niswi", "33")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niswi__qnt__sp67490.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-niiwin", "34")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niiwin__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-naanan", "35")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-naanan__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-ningodwaaswi", "36")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ningodwaaswi__qnt__nj61006_0.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-niizhwaaswi", "37")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niizhwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-ishwaaswi", "38")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ishwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("nisimidana ashi-zhaangaswi", "39")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/nisimidana__qnt__gp68005_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi__ta_mi_2s-3__sp65284_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/zhaangaswi_av____gh580143.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana", "40")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-bezhig", "41")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-bezhig__qnt__sp67490.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-niizh", "42")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niizh__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-niswi", "43")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niswi__qnt__sp67490.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-niiwin", "44")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niiwin__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-naanan", "45")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-naanan__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-ningodwaaswi", "46")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ningodwaaswi__qnt__nj61006_0.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-niizhwaaswi", "47")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-niizhwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-ishwaaswi", "48")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi-ishwaaswi__qnt__gp68005_3.mp4");
+    
+    ojibwemowin.AddPhrase("niimidana ashi-zhaangaswi", "49")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/niimidana_av____gh580143.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/ashi__ta_mi_2s-3__sp65284_3.mp4")
+        .AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/zhaangaswi_av____gh580143.mp4");
+    
+    ojibwemowin.AddPhrase("naanimidana", "50")
+        .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/naanimidana__qnt__gp68006_3.mp4");
     
     ojibwemowin.AddPhrase("waawaashkeshi", "deer")
         .soundHandler.AddSoundFile("https://s3.amazonaws.com/ojibwe-audio-transcoded/waawaashkeshi_na__sg___gj512069.mp4");

@@ -146,7 +146,7 @@ export class cardHandler {
             this.ballHandler.AssignNewBallSeeds();
         }
         
-        console.log(this);
-        console.log(this.gameHandlerOwner.ballHandler);
+        //console.log(this);
+        //console.log(this.gameHandlerOwner.ballHandler);
     }
 }

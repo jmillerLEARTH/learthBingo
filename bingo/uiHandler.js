@@ -151,7 +151,7 @@ export class uiHandler {
         
         for(const b of this.gameHandlerOwner.ballHandler.pulledBalls){
             
-            console.log(b);
+            //console.log(b);
             
             if(b.headerIndex == headerIndex){
                 

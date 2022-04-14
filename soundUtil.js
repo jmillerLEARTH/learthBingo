@@ -8,7 +8,7 @@ export function PlaySequentialSounds(soundPaths,debugLogObject = null){
         
         audios.push($audio);
         
-        console.log(audios);
+        //console.log(audios);
     }
     
     for(let i=0; i<audios.length; i++){
@@ -21,6 +21,7 @@ export function PlaySequentialSounds(soundPaths,debugLogObject = null){
                     audios[i].play();
                 }
                 catch{
+                    console.log("fail");
                     if(debugLogObject != null){
                         debugLogObject.failedAudioSources.push(audios[i]);
                         console.warn(debugLogObject.failedAudioSources);
@@ -30,7 +31,7 @@ export function PlaySequentialSounds(soundPaths,debugLogObject = null){
         }
     }
     
-    console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
+    //console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
     
     audios[0].play();
 }

@@ -23,6 +23,8 @@ export class soundHandler{
         let $soundFile = new soundFile(this,path);
         this.sounds.push($soundFile);
         
+        return this
+        
     }
     
     PlaySounds(){
@@ -127,7 +129,7 @@ export class langHandler {
 
         let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
         
-        if($phrase == false) return
+        if($phrase == false) return false
         
         $phrase.soundHandler.PlaySounds();
                 
@@ -137,9 +139,9 @@ export class langHandler {
         
         let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
         
-        if($phrase == false) return
+        if($phrase == false) return false
         
-        console.log($phrase);
+        //console.log($phrase);
         
         let $returnArr = [];
         
@@ -156,6 +158,7 @@ export class langHandler {
         let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
         
         if($phrase != false) return $phrase.phrase;
+        else return false
     }
 }
 
