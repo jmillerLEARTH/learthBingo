@@ -115,13 +115,11 @@ export class ballHandler {
     
     CallBall(ball){
         
-        let $sounds = [];
+        this.owner.uiHandler.UpdateCallPage(ball.headerIndex,ball.header,ball.callText);
         
-        let $callString = "";
+        let $sounds = [];
 
         for(const l of this.owner.gameSettingsHandler.gameCallLangs){
-            
-            $callString = $callString + this.owner.audioCallLibrary.GetPhrase(l,ball.header,false,true) + " ";
 
             let $headerSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.header,false,true);
 
@@ -129,8 +127,6 @@ export class ballHandler {
 
                 $sounds.push(hs);
             }
-            
-            $callString = $callString + this.owner.audioCallLibrary.GetPhrase(l,ball.callText,false,true);
 
             let $callSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.callText,false,true);
 
@@ -141,8 +137,6 @@ export class ballHandler {
 //                         
 //                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
         }
-        
-        this.owner.uiHandler.UpdateCallPage(ball.headerIndex,ball.header,ball.callText);
 
         console.log($sounds);
         

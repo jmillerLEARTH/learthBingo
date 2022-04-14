@@ -42,9 +42,11 @@ class gameSettingsHandler{
         
         this.gameHandlerOwner.cardHandler.GenerateCards(3);
         
-        this.gameHandlerOwner.uiHandler.DisplayCallPage();
+        this.gameHandlerOwner.uiHandler.DisplayCardPrintPage();
         
-        this.gameHandlerOwner.ballHandler.SortBallsBySeed();
+//        this.gameHandlerOwner.uiHandler.DisplayCallPage();
+//        
+//        this.gameHandlerOwner.ballHandler.SortBallsBySeed();
     }
 }
 
@@ -64,6 +66,24 @@ export class gameHandler {
         this.audioCallLibrary.InitiateLangs();
     
         this.uiHandler.DisplayGameSettingsPage();
+    }
+    
+    ProceedToCalls(){
+        
+        if(confirm("Are you ready to call?")){
+            
+            console.log(this);
+        
+            this.gameHandler.uiHandler.DisplayCallPage();
+        
+        }
+    
+        else {
+        
+            setTimeout(proceedToCalls, 7000);
+        
+        }
+        
     }
     
     TestCall(sound){
