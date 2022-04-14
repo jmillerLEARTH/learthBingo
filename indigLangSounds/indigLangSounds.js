@@ -1,4 +1,5 @@
 import {InitLangs} from "./initLangs.js";
+import {PlaySequentialSounds} from "./../soundUtil.js";
 
 export class soundFile{
     
@@ -26,14 +27,23 @@ export class soundHandler{
     
     PlaySounds(){
         
+        let $playArr = [];
+        
         for(const snd of this.sounds){
             
-            console.warn("currently will only work with single sound phrases");
-
-            const $tempAudio = new Audio(snd.path);
-            $tempAudio.play()
-
+            $playArr.push(snd.path);
         }
+        
+        PlaySequentialSounds($playArr);
+        
+//        for(const snd of this.sounds){
+//            
+//            console.warn("currently will only work with single sound phrases");
+//
+//            const $tempAudio = new Audio(snd.path);
+//            $tempAudio.play()
+//
+//        }
     }
 
 }
@@ -109,17 +119,25 @@ export class langHandler {
                 }
             }
         }
+        
+        return false
     }
     
     PlayLangSound(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
 
-        this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase).soundHandler.PlaySounds();
+        let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
+        
+        if($phrase == false) return
+        
+        $phrase.soundHandler.PlaySounds();
                 
     }
     
     GetSoundPaths(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
         
         let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
+        
+        if($phrase == false) return
         
         console.log($phrase);
         
@@ -131,6 +149,13 @@ export class langHandler {
         }
         
         return $returnArr
+    }
+    
+    GetPhrase(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
+        
+        let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
+        
+        if($phrase != false) return $phrase.phrase;
     }
 }
 

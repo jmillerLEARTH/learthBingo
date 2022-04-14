@@ -115,31 +115,38 @@ export class ballHandler {
     
     CallBall(ball){
         
-        if(this.owner.gameSettingsHandler.playAudioCalls){
+        let $sounds = [];
+        
+        let $callString = "";
+
+        for(const l of this.owner.gameSettingsHandler.gameCallLangs){
             
-            let $sounds = [];
-            
-            for(const l of this.owner.gameSettingsHandler.gameCallLangs){
-                
-                let $headerSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.header,false,true);
-                
-                for(const hs of $headerSounds){
-                    
-                    $sounds.push(hs);
-                }
-                
-                let $callSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.callText,false,true);
-                
-                for(const cs of $callSounds){
-                    
-                    $sounds.push(cs);
-                }
-//                         
-//                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
+            $callString = $callString + this.owner.audioCallLibrary.GetPhrase(l,ball.header,false,true) + " ";
+
+            let $headerSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.header,false,true);
+
+            for(const hs of $headerSounds){
+
+                $sounds.push(hs);
             }
             
-            console.log($sounds);
-            
+            $callString = $callString + this.owner.audioCallLibrary.GetPhrase(l,ball.callText,false,true);
+
+            let $callSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.callText,false,true);
+
+            for(const cs of $callSounds){
+
+                $sounds.push(cs);
+            }
+//                         
+//                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
+        }
+        
+        this.owner.uiHandler.UpdateCallPage(ball.headerIndex,ball.header,ball.callText);
+
+        console.log($sounds);
+        
+        if(this.owner.gameSettingsHandler.playAudioCalls){    
             PlaySequentialSounds($sounds);
         }   
     }
