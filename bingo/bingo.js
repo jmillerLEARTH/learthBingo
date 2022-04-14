@@ -1,5 +1,6 @@
 import {uiHandler} from "./uiHandler.js";
 import {ballHandler} from "./ballHandler.js";
+import {cardHandler} from "./cardHandler.js"
 
 
 class prevCallHandler {
@@ -79,95 +80,3 @@ export class gameHandler {
         console.log(this);
     }
 }
-
-class cardSpace {
-    
-    constructor(cardOwner,x,y,content){
-        
-        this.cardOwner = cardOwner;
-        this.x = x;
-        this.y = y;
-        this.content = content;
-    }
-}
-
-class card {
-    
-    constructor(cardHandlerOwner){
-        
-        this.cardHandlerOwner = cardHandlerOwner;
-        this.nextXPlace = 0;
-        this.nextYPlace = 0;
-        this.spaces = [];
-        
-    }
-    
-    AssignSpace(){
-        
-        let $pulledBall = this.cardHandlerOwner.gameHandlerOwner.ballHandler.PullBall(false);
-        
-        console.log($pulledBall);
-        
-        $pulledBall.SetHeader(this.cardHandlerOwner.headers[this.nextYPlace]);
-        
-        let $space = new cardSpace(this,this.nextXPlace,this.nextYPlace,$pulledBall.cardText);
-        this.spaces.push($space);
-        
-        this._MoveToNextYPlace();
-    }
-    
-    _MoveToNextYPlace(){
-    
-        this.nextYPlace++;
-        
-        if(this.nextYPlace == 5){
-            
-            this.nextXPlace++;
-            this.nextYPlace = 0;
-        }
-    }
-}
-
-class cardHandler {
-    
-    constructor(gameHandlerOwner){
-        
-        this.gameHandlerOwner = gameHandlerOwner;
-        this.cards = [];
-        this.headers = [];
-
-    }
-    
-    SetHeaders(hdr0,hdr1,hdr2,hdr3,hdr4){
-        
-        this.headers.push(hdr0);
-        this.headers.push(hdr1);
-        this.headers.push(hdr2);
-        this.headers.push(hdr3);
-        this.headers.push(hdr4);
-    }
-    
-    GenerateCards(num){
-        
-        console.warn("assigned spaces are not sorted so you might have 1 and 52 in the same column");
-        
-        //determine how evenly the total number of balls divides into 5 and then put them into header0Bucket, header1Bucket, etc.
-        //and draw out of those
-        
-        for(let i=0; i<num+1; i++){
-            
-            let $card = new card(this);
-            
-            for(let s=0; s<51; s++){
-                
-                $card.AssignSpace();
-            }
-            
-            this.gameHandlerOwner.ballHandler.ReturnAllPulledBalls();
-        }
-        
-        console.log(this);
-        console.log(this.gameHandlerOwner.ballHandler);
-    }
-}
-

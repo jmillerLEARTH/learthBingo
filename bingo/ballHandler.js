@@ -5,19 +5,21 @@ class ball {
         this.cardText = cardText;
         this.callText = callText;
         this.header;
-        this.pullSeed = null;
+        this.headerIndex;
+        this.pullSeed = Math.random();
     }
     
-    SetHeader(header){
+    SetHeader(headerIndex,header){
         this.header = header;
+        this.headerIndex = headerIndex;
     }
 }
 
 export class ballHandler {
     
-    constructor(gameHandlerOwner){
+    constructor(owner){
         
-        this.gameHandlerOwner = gameHandlerOwner;
+        this.owner = owner; //can be gameHandler or cardHandler
         this.balls = [];
         this.pulledBalls = [];
         this.pullSeeds = [];
@@ -37,45 +39,65 @@ export class ballHandler {
         
         let $ball = new ball(cardText,callText);
         this.balls.push($ball);
+        
+        return $ball
     }
     
     ReturnAllPulledBalls(){
         
         for(const b of this.pulledBalls){
             
-            this.balls.push[b];
+            this.balls.push(b);
         }
         
         this.pulledBalls = [];
     }
     
-    _AssignBallSeeds(){
-        
-        this.pullSeeds = [];
+    AssignNewBallSeeds(){
         
         for(const b of this.balls){
             
-            let $seed = Math.random();
-            b.pullSeed = $seed;
-            this.pullSeeds.push($seed);
+            b.pullSeed = Math.random();
         }
     }
     
-    _GetHighestPullSeedBall(){
+    SortBallsByCardText(){
         
-        for(const b of this.balls){
-            
-            if(b.pullSeed == Math.max(...this.pullSeeds)) return b
-        }
+        this.balls.sort((a, b) => (a.cardText > b.cardText) ? 1 : -1)
+    }
+    
+    SortBallsBySeed(){
+        
+        this.balls.sort((a, b) => (a.pullSeed > b.pullSeed) ? 1 : -1)
+    }
+    
+    GetNumBallsRemaining(){
+        
+        return this.balls.length
+    }
+    
+//    _GetHighestPullSeedBall(){
+//        
+//        for(const b of this.balls){
+//            
+//            if(b.pullSeed == Math.max(...this.pullSeeds)) return b
+//        }
+//    }
+//    
+    RemoveBall(ball){
+        
+        this.balls = this.balls.filter((e) => e != ball);
+        
+        this.pulledBalls.push(ball);
     }
     
     PullBall(forCall=true){
         
-        this._AssignBallSeeds();
+        //this._AssignBallSeeds();
         
-        let $pulledBall = this._GetHighestPullSeedBall();
+        let $pulledBall = this.balls.shift();
         
-        this.balls = this.balls.filter((e) => e != $pulledBall);
+        //;
         
         this.pulledBalls.push($pulledBall);
         
@@ -91,11 +113,11 @@ export class ballHandler {
     
     CallBall(ball){
         
-        if(this.gameHandlerOwner.gameSettingsHandler.playAudioCalls){
+        if(this.owner.gameSettingsHandler.playAudioCalls){
             
-            for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
+            for(const l of this.owner.gameSettingsHandler.gameCallLangs){
                          
-                this.gameHandlerOwner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
+                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
             }
         }   
     }
