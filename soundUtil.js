@@ -1,4 +1,4 @@
-export function PlaySequentialSounds(soundPaths){
+export function PlaySequentialSounds(soundPaths,debugLogObject = null){
     
     let audios = [];
     
@@ -16,9 +16,21 @@ export function PlaySequentialSounds(soundPaths){
         if(i != 0){
         
             audios[i-1].addEventListener('ended', function(){
-                audios[i].play()});
+                
+                try{
+                    audios[i].play();
+                }
+                catch{
+                    if(debugLogObject != null){
+                        debugLogObject.failedAudioSources.push(audios[i]);
+                        console.warn(debugLogObject.failedAudioSources);
+                    }       
+                }
+            })
         }
     }
+    
+    console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
     
     audios[0].play();
 }

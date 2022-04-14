@@ -141,7 +141,7 @@ export class ballHandler {
         console.log($sounds);
         
         if(this.owner.gameSettingsHandler.playAudioCalls){    
-            PlaySequentialSounds($sounds);
+            PlaySequentialSounds($sounds,this.owner);
         }   
     }
 }

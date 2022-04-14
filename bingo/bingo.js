@@ -59,6 +59,7 @@ export class gameHandler {
         this.cardHandler = new cardHandler(this);
         this.uiHandler = new uiHandler(this);
         this.audioCallLibrary = audioCallLibrary;
+        this.failedAudioSources = [];
     }
     
     StartGame(){
