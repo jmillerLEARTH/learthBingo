@@ -36,7 +36,7 @@ class gameSettingsHandler{
         
         this.AddGameCallLang("ojibwemowin");
         
-        this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,50);
+        this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,75);
         
         this.gameHandlerOwner.cardHandler.SetHeaders("bear","bird","marten","deer","loon");
         
