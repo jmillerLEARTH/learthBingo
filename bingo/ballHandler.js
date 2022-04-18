@@ -117,35 +117,42 @@ export class ballHandler {
         
         this.owner.uiHandler.UpdateCallPage(ball.headerIndex,ball.header,ball.callText);
         
-        let $sounds = [];
-
-        for(const l of this.owner.gameSettingsHandler.gameCallLangs){
-
-            let $headerSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.header,false,true);
-
-            if($headerSounds != false){
-                for(const hs of $headerSounds){
-
-                    $sounds.push(hs);
-                }
+        for (const l of this.owner.gameSettingsHandler.gameCallLangs){
+         
+            if(this.owner.gameSettingsHandler.playAudioCalls){
+                this.owner.audioCallLibrary.PlayPhrases(l,[ball.header,ball.callText],false,true)
             }
-
-            let $callSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.callText,false,true);
-
-            if($callSounds != false){
-                for(const cs of $callSounds){
-
-                    $sounds.push(cs);
-                }
-            }
-//                         
-//                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
         }
-
-        //console.log($sounds);
         
-        if(this.owner.gameSettingsHandler.playAudioCalls){    
-            PlaySequentialSounds($sounds,this.owner);
-        }   
+//        let $sounds = [];
+//
+//        for(const l of this.owner.gameSettingsHandler.gameCallLangs){
+//
+//            let $headerSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.header,false,true);
+//
+//            if($headerSounds != false){
+//                for(const hs of $headerSounds){
+//
+//                    $sounds.push(hs);
+//                }
+//            }
+//
+//            let $callSounds = this.owner.audioCallLibrary.GetSoundPaths(l,ball.callText,false,true);
+//
+//            if($callSounds != false){
+//                for(const cs of $callSounds){
+//
+//                    $sounds.push(cs);
+//                }
+//            }
+////                         
+////                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
+//        }
+//
+//        //console.log($sounds);
+//        
+//        if(this.owner.gameSettingsHandler.playAudioCalls){    
+//            PlaySequentialSounds($sounds,this.owner);
+//        }   
     }
 }

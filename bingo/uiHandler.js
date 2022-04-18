@@ -170,9 +170,13 @@ export class uiHandler {
         
     }
     
-    _ExpandCallMenu(txt){
+    _ExpandCallMenu(div){
         
-        console.log(txt);
+        for (const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
+         
+            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[div.getAttribute('data-content')],false,true)
+
+        }
     }
     
     _AddCallToChronologicalCalls(header,content){
@@ -198,7 +202,5 @@ export class uiHandler {
                 window.gameHandler.uiHandler._ExpandCallMenu($lastCreatedCallDiv);
                 };
             } );
-        
-        console.log($lastCreatedCallLink);
     }
 }

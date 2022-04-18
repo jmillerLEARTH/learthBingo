@@ -135,6 +135,25 @@ export class langHandler {
                 
     }
     
+    PlayPhrases(lang,phraseArr,searchByEngLangName=false,searchByEngPhrase=false){
+        
+        let $sounds = [];
+        
+        for(const ph of phraseArr){
+            
+            let $sPaths = this.GetSoundPaths(lang,ph,searchByEngLangName,searchByEngPhrase);
+            
+            if($sPaths == false) continue
+            
+            for(const sPath of $sPaths){
+                
+                $sounds.push(sPath);
+            }
+        }
+        
+        PlaySequentialSounds($sounds,this);
+    }
+    
     GetSoundPaths(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
         
         let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
