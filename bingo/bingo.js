@@ -38,11 +38,13 @@ class gameSettingsHandler{
         
         this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,75);
         
-        this.gameHandlerOwner.cardHandler.SetHeaders("bear","bird","marten","deer","loon");
+        this.gameHandlerOwner.cardHandler.SetHeaders("B","I","N","G","O");
         
         this.gameHandlerOwner.cardHandler.GenerateCards(3);
         
         this.gameHandlerOwner.uiHandler.DisplayCardPrintPage();
+        
+        this.playAudioCalls = false;
         
 //        this.gameHandlerOwner.uiHandler.DisplayCallPage();
 //        

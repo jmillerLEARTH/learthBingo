@@ -6,6 +6,7 @@ export class uiHandler {
     constructor(gameHandlerOwner){
         
         this.gameHandlerOwner = gameHandlerOwner;
+        this.currentCallIndex = 0;
     }
     
     DisplayGameSettingsPage(){
@@ -140,6 +141,8 @@ export class uiHandler {
     
     UpdateCallPage(headerIndex,header,content){
         
+        this.currentCallIndex = this.gameHandlerOwner.ballHandler.pulledBalls.length - 1;
+        
         this._AddCallToChronologicalCalls(header,content);
         
         this._AddCallToHeaderCalls(headerIndex,content);
@@ -167,10 +170,35 @@ export class uiHandler {
         
     }
     
+    _ExpandCallMenu(txt){
+        
+        console.log(txt);
+    }
+    
     _AddCallToChronologicalCalls(header,content){
         
         let $html = document.getElementById("previousCalls").innerHTML;
         
-        document.getElementById("previousCalls").innerHTML =  header + " " + content + "<br><br>" + $html;
+        var $lastCreatedCallDiv = document.createElement("div");
+        $lastCreatedCallDiv.id = "chronCall" + this.currentCallIndex;
+        $lastCreatedCallDiv.setAttribute('data-content', content);
+        
+        var $lastCreatedCallLink = document.createElement('button');
+        $lastCreatedCallLink.id = "chronCallLink" + this.currentCallIndex;
+        $lastCreatedCallLink.innerHTML = header + " " + content;
+        
+        
+        document.getElementById("previousCalls").prepend($lastCreatedCallDiv);
+        $lastCreatedCallDiv.append($lastCreatedCallLink);
+        $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML + "<br><br>";
+        
+        
+        document.body.addEventListener( 'click', function ( event ) {
+            if( event.target.id == $lastCreatedCallLink.id ) {
+                window.gameHandler.uiHandler._ExpandCallMenu($lastCreatedCallDiv);
+                };
+            } );
+        
+        console.log($lastCreatedCallLink);
     }
 }
