@@ -186,6 +186,7 @@ export class uiHandler {
         var $lastCreatedCallDiv = document.createElement("div");
         $lastCreatedCallDiv.id = "chronCall" + this.currentCallIndex;
         $lastCreatedCallDiv.setAttribute('data-content', content);
+        //$lastCreatedCallDiv.style.border = '2px solid gray'
         
         var $lastCreatedCallLink = document.createElement('button');
         $lastCreatedCallLink.id = "chronCallLink" + this.currentCallIndex;
@@ -194,8 +195,23 @@ export class uiHandler {
         
         document.getElementById("previousCalls").prepend($lastCreatedCallDiv);
         $lastCreatedCallDiv.append($lastCreatedCallLink);
-        $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML + "<br><br>";
         
+        
+        let $transliteratedString = "";
+        
+        for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
+            
+            $transliteratedString = $transliteratedString + this.gameHandlerOwner.audioCallLibrary.GetTransliteratedString(l,[header,content]);
+            
+            if(this.gameHandlerOwner.gameSettingsHandler.gameCallLangs.length > 1){
+                
+                $transliteratedString = $transliteratedString + " (" + l + ")";
+            }
+        }
+        
+        $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML +"<br>" + $transliteratedString;
+        
+        $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML + "<br><br>";
         
         document.body.addEventListener( 'click', function ( event ) {
             if( event.target.id == $lastCreatedCallLink.id ) {

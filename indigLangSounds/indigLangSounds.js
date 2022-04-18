@@ -154,6 +154,26 @@ export class langHandler {
         PlaySequentialSounds($sounds,this);
     }
     
+    GetTransliteratedString(lang,phraseArr,searchByEngLangName=false){
+        
+        let $strings = [];
+        
+        for(let i = 0; i < phraseArr.length; i++){
+            
+            let $searchKey = phraseArr[i];
+            
+            let $phrase = String(this.GetPhrase(lang,$searchKey,searchByEngLangName,true));
+            
+            if ($phrase == "false") continue
+            
+            if(i != phraseArr.length - 1) $phrase += " ";
+            
+            $strings.push($phrase);
+        }
+        
+        return $strings
+    }
+    
     GetSoundPaths(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
         
         let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
