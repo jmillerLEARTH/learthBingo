@@ -203,6 +203,8 @@ export class uiHandler {
             
             $transliteratedString = $transliteratedString + this.gameHandlerOwner.audioCallLibrary.GetTransliteratedString(l,[header,content]);
             
+            // will display name of each language in parentheses after transliteration IFF there are multiple game call languages
+            
             if(this.gameHandlerOwner.gameSettingsHandler.gameCallLangs.length > 1){
                 
                 $transliteratedString = $transliteratedString + " (" + l + ")";
