@@ -143,9 +143,16 @@ export class uiHandler {
         
         this.currentCallIndex = this.gameHandlerOwner.ballHandler.pulledBalls.length - 1;
         
+        this._UpdateCallsCount();
+        
         this._AddCallToChronologicalCalls(header,content);
         
         this._AddCallToHeaderCalls(headerIndex,content);
+    }
+    
+    _UpdateCallsCount(){
+        
+        document.getElementById("callsNum").innerHTML = this.currentCallIndex + 1;
     }
     
     _AddCallToHeaderCalls(headerIndex,content){
