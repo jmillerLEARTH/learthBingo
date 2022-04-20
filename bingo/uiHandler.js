@@ -1,5 +1,6 @@
 import {gameSettingsPageHTMLString} from "./gameSettingsPageString.js";
 import {callPageHTMLString} from "./callPageString.js";
+import {secondDisplayHandler} from "./secondDisplayHandler.js";
 
 export class uiHandler {
     
@@ -7,6 +8,7 @@ export class uiHandler {
         
         this.gameHandlerOwner = gameHandlerOwner;
         this.currentCallIndex = 0;
+        this.secondDisplayHandler = new secondDisplayHandler(this);
     }
     
     DisplayGameSettingsPage(){
