@@ -169,7 +169,7 @@ export class uiHandler {
             }
         }
         
-        $displayArr.sort();
+        $displayArr.sort((a, b) => a - b);
         
         let $headerText = this.gameHandlerOwner.cardHandler.headers[headerIndex];
         
