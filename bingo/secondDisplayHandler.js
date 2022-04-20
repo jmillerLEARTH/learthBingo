@@ -13,20 +13,54 @@ export class secondDisplayHandler{
     
     InitializeSecondDisplay(){
         
+        if(!this.secondWindowHasDisplayedElements) return
+        
         this.secondDisplay = window.open();
-        let $div = this.secondDisplay.document.createElement("div");
-        $div.id = "main";
-        $div.style = "font-size:72px;text-align:center;padding:20% 0;font-family:sans-serif";
-        this.secondDisplay.document.body.append($div);
+        
+        let $div;
+        
+        if(this.displayBingoDiagrams){
+            
+            $div = this.secondDisplay.document.createElement("div");
+            $div.id = "bingoDiagrams";
+            $div.style = "padding:2%";
+            this.secondDisplay.document.body.append($div);
+        }
+        
+        if(this.displayTransliteratedString){
+            $div = this.secondDisplay.document.createElement("div");
+            $div.id = "transliteratedStrings";
+            $div.style = "font-size:72px;text-align:center;padding:5% 0;font-family:sans-serif";
+            this.secondDisplay.document.body.append($div);
+        }
     }
     
-    DisplayTransliteratedString(){
+    UpdateTransliteratedString(content){
+        
+        if(!this.displayTransliteratedString) return
+        
+        this.secondDisplay.document.getElementById("transliteratedStrings").innerHTML = content;
+    }
+    
+    UpdateBingoDiagrams(diagArr){
+        
+        if(!this.displayBingoDiagrams) return
+        
+        let $displayHTML;
+        
+        for(const d of diagArr){
+            
+            $displayHTML = $displayHTML + ` <img src="bingoDiagrams/"` + d `.png>`;
+        }
+    }
+    
+    SetToDisplayTransliteratedString(){
         
         this.displayTransliteratedString = true;
         this.secondWindowHasDisplayedElements = true;
     }
     
-    DisplayBingoDiagrams(){
+    SetToDisplayBingoDiagrams(){
         
         this.displayBingoDiagrams = true;
         this.secondWindowHasDisplayedElements = true;

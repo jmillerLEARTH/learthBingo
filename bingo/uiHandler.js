@@ -190,17 +190,7 @@ export class uiHandler {
     
     _DisplayCallOnSeparateWindow(content){
         
-        if(!this.gameHandlerOwner.gameSettingsHandler.displayTransliteratedStringOnSecondWindow) return
-        
-        if(this.callWindow == null){
-            
-            this.callWindow = window.open();
-            let $callWindowDiv = this.callWindow.document.createElement("div");
-            $callWindowDiv.id = "callWindowDiv";
-            $callWindowDiv.style = "font-size:72px;text-align:center;padding:20% 0;font-family:sans-serif";
-            this.callWindow.document.body.append($callWindowDiv);
-            //console.log(this.callWindow);
-        }
+        if(this.gameHandlerOwner.gameSettingsHandler.displayTransliteratedStringOnSecondWindow) return
         
         this.callWindow.document.getElementById("callWindowDiv").innerHTML = content;
         
