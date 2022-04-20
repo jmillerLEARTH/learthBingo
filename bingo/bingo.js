@@ -47,7 +47,9 @@ class gameSettingsHandler{
         
         this.playAudioCalls = false;
         
-        this.displayTransliteratedStringOnSecondWindow = true;
+        this.gameHandlerOwner.uiHandler.secondDisplayHandler.DisplayTransliteratedString();
+        
+        this.gameHandlerOwner.uiHandler.secondDisplayHandler.DisplayBingoDiagrams();
         
 //        this.gameHandlerOwner.uiHandler.DisplayCallPage();
 //        
