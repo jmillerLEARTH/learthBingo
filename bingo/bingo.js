@@ -25,6 +25,7 @@ class gameSettingsHandler{
         this.gameHandlerOwner = gameHandlerOwner;
         this.playAudioCalls = true;
         this.gameCallLangs = [];
+        this.displayTransliteratedStringOnSecondWindow;
     }
     
     AddGameCallLang(lang){ //takes a string
@@ -45,6 +46,8 @@ class gameSettingsHandler{
         this.gameHandlerOwner.uiHandler.DisplayCardPrintPage();
         
         this.playAudioCalls = false;
+        
+        this.displayTransliteratedStringOnSecondWindow = true;
         
 //        this.gameHandlerOwner.uiHandler.DisplayCallPage();
 //        

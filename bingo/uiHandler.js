@@ -186,25 +186,45 @@ export class uiHandler {
         }
     }
     
-    _AddCallToChronologicalCalls(header,content){
+    _DisplayCallOnSeparateWindow(content){
         
-        let $html = document.getElementById("previousCalls").innerHTML;
+        if(!this.gameHandlerOwner.gameSettingsHandler.displayTransliteratedStringOnSecondWindow) return
         
-        var $lastCreatedCallDiv = document.createElement("div");
+        if(this.callWindow == null){
+            
+            this.callWindow = window.open();
+            let $callWindowDiv = this.callWindow.document.createElement("div");
+            $callWindowDiv.id = "callWindowDiv";
+            $callWindowDiv.style = "font-size:72px;text-align:center;padding:20% 0;font-family:sans-serif";
+            this.callWindow.document.body.append($callWindowDiv);
+            //console.log(this.callWindow);
+        }
+        
+        this.callWindow.document.getElementById("callWindowDiv").innerHTML = content;
+        
+    }
+    
+    _CreateNewCallDiv(content){
+        
+        let $lastCreatedCallDiv = document.createElement("div");
         $lastCreatedCallDiv.id = "chronCall" + this.currentCallIndex;
         $lastCreatedCallDiv.setAttribute('data-content', content);
-        //$lastCreatedCallDiv.style.border = '2px solid gray'
         
-        var $lastCreatedCallLink = document.createElement('button');
+        return $lastCreatedCallDiv
+    }
+    
+    _CreateNewCallLink(header,content){
+        
+        let $lastCreatedCallLink = document.createElement('button');
         $lastCreatedCallLink.id = "chronCallLink" + this.currentCallIndex;
         $lastCreatedCallLink.innerHTML = header + " " + content;
         
+        return $lastCreatedCallLink
+    }
+    
+    _GetTransliteratedStringForEachGameLang(header,content){
         
-        document.getElementById("previousCalls").prepend($lastCreatedCallDiv);
-        $lastCreatedCallDiv.append($lastCreatedCallLink);
-        
-        
-        let $transliteratedString = "";
+         let $transliteratedString = "";
         
         for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
             
@@ -218,7 +238,26 @@ export class uiHandler {
             }
         }
         
+        return $transliteratedString
+    }
+    
+    _AddCallToChronologicalCalls(header,content){
+        
+        let $html = document.getElementById("previousCalls").innerHTML;
+        
+        let $lastCreatedCallDiv = this._CreateNewCallDiv(content);
+        
+        let $lastCreatedCallLink = this._CreateNewCallLink(header,content);
+        
+        document.getElementById("previousCalls").prepend($lastCreatedCallDiv);
+        
+        let $transliteratedString = this._GetTransliteratedStringForEachGameLang(header,content);
+        
+        $lastCreatedCallDiv.append($lastCreatedCallLink);
+        
         $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML +"<br>" + $transliteratedString;
+        
+        this._DisplayCallOnSeparateWindow($transliteratedString);
         
         $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML + "<br><br>";
         
