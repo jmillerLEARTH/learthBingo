@@ -48,14 +48,14 @@ export class secondDisplayHandler{
         
         let $diagMenuDiv = doc.createElement("div");
         $diagMenuDiv.id = "diagMenu";
-        $diagMenuDiv.style = "float:left;position:fixed;left: 5%";
+        $diagMenuDiv.style = "z-index:200;float:left;position:absolute;left: 5%";
         $diagMenuDiv.setAttribute('data-expandedBool', false);
         
         let $diagMenuButton = doc.createElement("button");
         $diagMenuButton.id = "diagMenuButton";
         $diagMenuButton.innerHTML = "Display Bingo Diagrams";
         
-        doc.body.append($diagMenuDiv);
+        doc.body.prepend($diagMenuDiv);
         $diagMenuDiv.append($diagMenuButton);
         
         document.body.addEventListener( 'click', function ( event ) {
