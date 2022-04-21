@@ -46,12 +46,47 @@ export class secondDisplayHandler{
         
         if(!this.displayBingoDiagrams) return
         
-        let $diagMenu = doc.createElement("div");
-        $diagMenu.id = "diagMenu";
-        $diagMenu.style = "position:fixed;padding: 5% 5%";
-        $diagMenu.innerHTML = "Display Bingo Diagrams";
+        let $diagMenuDiv = doc.createElement("div");
+        $diagMenuDiv.id = "diagMenu";
+        $diagMenuDiv.style = "float:left;position:fixed;left: 5%";
+        $diagMenuDiv.setAttribute('data-expandedBool', false);
         
-        doc.body.append($diagMenu);
+        let $diagMenuButton = doc.createElement("button");
+        $diagMenuButton.id = "diagMenuButton";
+        $diagMenuButton.innerHTML = "Display Bingo Diagrams";
+        
+        doc.body.append($diagMenuDiv);
+        $diagMenuDiv.append($diagMenuButton);
+        
+        document.body.addEventListener( 'click', function ( event ) {
+            if( event.target.id == "diagMenuButton" ) {
+                window.gameHandler.uiHandler.secondDisplayHandler._ExpandBingoDiagramMenu(doc,$diagMenuButton);
+                };
+            } );
+    }
+    
+    _ExpandBingoDiagramMenu(doc,button){
+        
+        const $div = doc.getElementById("diagMenu");
+        
+        if($div.getAttribute("data-expandedBool") == "false"){
+                    
+            let $button0 = doc.createElement("button");
+            $button0.id = "acrossBingo";
+            $button0.innerHTML = "Across Bingo";
+            
+            $div.setAttribute('data-expandedBool', true);
+            $div.innerHTML = $div.innerHTML + "<br>";
+            $div.append($button0);
+            
+        }
+        else{
+            
+            doc.getElementById("diagMenu").innerHTML = "";
+            doc.getElementById("diagMenu").append(button);
+            doc.getElementById("diagMenu").setAttribute('data-expandedBool', false);
+        }
+        
     }
     
     UpdateBingoDiagrams(diagArr){
