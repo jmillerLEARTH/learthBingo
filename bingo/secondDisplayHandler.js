@@ -42,6 +42,18 @@ export class secondDisplayHandler{
         this.secondDisplay.document.getElementById("transliteratedStrings").innerHTML = content;
     }
     
+    CreateBingoDiagramsMenu(doc){
+        
+        if(!this.displayBingoDiagrams) return
+        
+        let $diagMenu = doc.createElement("div");
+        $diagMenu.id = "diagMenu";
+        $diagMenu.style = "position:fixed;padding: 5% 5%";
+        $diagMenu.innerHTML = "Display Bingo Diagrams";
+        
+        doc.body.append($diagMenu);
+    }
+    
     UpdateBingoDiagrams(diagArr){
         
         if(!this.displayBingoDiagrams) return

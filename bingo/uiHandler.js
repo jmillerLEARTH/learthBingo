@@ -137,6 +137,8 @@ export class uiHandler {
         document.getElementById("header3Div").innerHTML = this.gameHandlerOwner.cardHandler.headers[3];
         document.getElementById("header4Div").innerHTML = this.gameHandlerOwner.cardHandler.headers[4];
         
+        this.secondDisplayHandler.CreateBingoDiagramsMenu(document);
+        
         this.gameHandlerOwner.ballHandler.SortBallsBySeed();
         
     }
@@ -192,7 +194,7 @@ export class uiHandler {
         
         if(this.gameHandlerOwner.gameSettingsHandler.displayTransliteratedStringOnSecondWindow) return
         
-        this.callWindow.document.getElementById("callWindowDiv").innerHTML = content;
+        //this.callWindow.document.getElementById("callWindowDiv").innerHTML = content;
         
     }
     
