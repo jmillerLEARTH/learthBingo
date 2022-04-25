@@ -4,7 +4,7 @@ export let gameSettingsPageHTMLString = `
         window.ContinueWithQuickGameSettings = ContinueWithQuickGameSettings;
     </script>
 
-    <form><label for="count">Participants:</label><input type="text" id="partCount" style="font-size:26px;width:75px"></form>
+<form><label for="count">Participants:</label><input type="text" id="partCount" style="font-size:26px;width:75px"></form>
     <br>
 
     <button type="button" onclick="gameHandler.gameSettingsHandler.ContinueWithQuickGameSettings()">Quick Game</button><br><br>

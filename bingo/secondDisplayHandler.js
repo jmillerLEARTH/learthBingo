@@ -11,27 +11,28 @@ export class secondDisplayHandler{
         this.displayBingoDiagrams = false;
     }
     
-    InitializeSecondDisplay(){
+    InitializeSecondDisplay(doc){
         
         if(!this.secondWindowHasDisplayedElements) return
         
         this.secondDisplay = window.open();
         
-        let $div;
-        
         if(this.displayBingoDiagrams){
             
-            $div = this.secondDisplay.document.createElement("div");
-            $div.id = "bingoDiagrams";
-            $div.style = "padding:2%";
-            this.secondDisplay.document.body.append($div);
+            let $bingoDiagDiv = this.secondDisplay.document.createElement("div");
+            $bingoDiagDiv.id = "bingoDiagrams";
+            $bingoDiagDiv.style = "padding:2%";
+            //$//bingoDiagDiv.innerHTML = `<img src="bingo/bingoDiagrams/acrossBingo.png"></img></img>`;
+            this.secondDisplay.document.body.append($bingoDiagDiv);
+            
+            this.CreateBingoDiagramsMenu(doc);
         }
         
         if(this.displayTransliteratedString){
-            $div = this.secondDisplay.document.createElement("div");
-            $div.id = "transliteratedStrings";
-            $div.style = "font-size:72px;text-align:center;padding:5% 0;font-family:sans-serif";
-            this.secondDisplay.document.body.append($div);
+            let $transStringDiv = this.secondDisplay.document.createElement("div");
+            $transStringDiv.id = "transliteratedStrings";
+            $transStringDiv.style = "font-size:72px;text-align:center;padding:5% 0;font-family:sans-serif";
+            this.secondDisplay.document.body.append($transStringDiv);
         }
     }
     
@@ -79,6 +80,12 @@ export class secondDisplayHandler{
             $div.innerHTML = $div.innerHTML + "<br>";
             $div.append($button0);
             
+            doc.body.addEventListener( 'click', function ( event ) {
+            if( event.target.id == "acrossBingo" ) {
+                window.gameHandler.uiHandler.secondDisplayHandler.UpdateBingoDiagrams("acrossBingo");
+                };
+            } );
+            
         }
         else{
             
@@ -89,17 +96,27 @@ export class secondDisplayHandler{
         
     }
     
-    UpdateBingoDiagrams(diagArr){
+    UpdateBingoDiagrams(bingoDiagString){
         
         if(!this.displayBingoDiagrams) return
         
-        let $displayHTML;
+        console.log(bingoDiagString);
         
-        for(const d of diagArr){
-            
-            $displayHTML = $displayHTML + ` <img src="bingoDiagrams/"` + d `.png>`;
-        }
+        let $html = this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML;
+        
+        //<img src="bingo/bingoDiagrams/acrossBingo.png"></img>
+        
+        this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png"><img src="bingo/bingoDiagrams/acrossBingo.png">`;
+        
+        //let $displayHTML;
+        
+//        for(const d of diagArr){
+//            
+//            $displayHTML = $displayHTML + ` <img src="bingoDiagrams/"` + d `.png>`;
+//        }
     }
+        
+    
     
     SetToDisplayTransliteratedString(){
         
