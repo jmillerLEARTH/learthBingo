@@ -22,7 +22,7 @@ export class secondDisplayHandler{
             let $bingoDiagDiv = this.secondDisplay.document.createElement("div");
             $bingoDiagDiv.id = "bingoDiagrams";
             $bingoDiagDiv.style = "padding:2%";
-            //$//bingoDiagDiv.innerHTML = `<img src="bingo/bingoDiagrams/acrossBingo.png"></img></img>`;
+            $bingoDiagDiv.innerHTML = `<img src="bingo/bingoDiagrams/acrossBingo.png">`;
             this.secondDisplay.document.body.append($bingoDiagDiv);
             
             this.CreateBingoDiagramsMenu(doc);
@@ -100,13 +100,16 @@ export class secondDisplayHandler{
         
         if(!this.displayBingoDiagrams) return
         
-        console.log(bingoDiagString);
+        let $diag = document.createElement("img");
+        $diag.src = "bingo/bingoDiagrams/acrossBingo.png";
         
-        let $html = this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML;
+        this.secondDisplay.document.getElementById("bingoDiagrams").append($diag);
+        
+        //let $html = this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML;
         
         //<img src="bingo/bingoDiagrams/acrossBingo.png"></img>
         
-        this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png"><img src="bingo/bingoDiagrams/acrossBingo.png">`;
+        //this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png"><img src="bingo/bingoDiagrams/acrossBingo.png">`;
         
         //let $displayHTML;
         
