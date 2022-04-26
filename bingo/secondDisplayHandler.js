@@ -17,6 +17,11 @@ export class secondDisplayHandler{
         
         this.secondDisplay = window.open();
         
+        //THIS IS PART OF SOLUTION
+        //this.secondDisplay = window.open("http://localhost:3000/");
+        
+        console.log(this.secondDisplay.location);
+        
         if(this.displayBingoDiagrams){
             
             let $bingoDiagDiv = this.secondDisplay.document.createElement("div");
@@ -100,16 +105,16 @@ export class secondDisplayHandler{
         
         if(!this.displayBingoDiagrams) return
         
-        let $diag = document.createElement("img");
-        $diag.src = "bingo/bingoDiagrams/acrossBingo.png";
+//        let $diag = document.createElement("img");
+//        $diag.src = "bingo/bingoDiagrams/acrossBingo.png";
+//        
+//        this.secondDisplay.document.getElementById("bingoDiagrams").append($diag);
         
-        this.secondDisplay.document.getElementById("bingoDiagrams").append($diag);
-        
-        //let $html = this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML;
+        let $html = this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML;
         
         //<img src="bingo/bingoDiagrams/acrossBingo.png"></img>
         
-        //this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png"><img src="bingo/bingoDiagrams/acrossBingo.png">`;
+        this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png"><img src="https://drive.google.com/file/d/1Rvj5Nnq6oe2y5-Yz2gzRU9WbLRz-VLSL/view?usp=sharing">`;
         
         //let $displayHTML;
         

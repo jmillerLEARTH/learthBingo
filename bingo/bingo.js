@@ -74,6 +74,8 @@ export class gameHandler {
         this.audioCallLibrary.InitiateLangs();
     
         this.uiHandler.DisplayGameSettingsPage();
+        
+        console.log(window.location);
     }
     
     ProceedToCalls(){
