@@ -51,6 +51,8 @@ class gameSettingsHandler{
         
         this.gameHandlerOwner.uiHandler.secondDisplayHandler.SetToDisplayBingoDiagrams();
         
+        this.gameHandlerOwner.uiHandler.secondDisplayHandler.SetToDisplayBingoCall();
+        
 //        this.gameHandlerOwner.uiHandler.DisplayCallPage();
 //        
 //        this.gameHandlerOwner.ballHandler.SortBallsBySeed();

@@ -253,6 +253,8 @@ export class uiHandler {
         
         this.secondDisplayHandler.UpdateTransliteratedString($transliteratedString);
         
+        this.secondDisplayHandler.UpdateBingoCalls(header,content);
+        
         //this._DisplayCallOnSeparateWindow($transliteratedString);
         
         $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML + "<br><br>";

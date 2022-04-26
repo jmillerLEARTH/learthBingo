@@ -22,6 +22,15 @@ export class secondDisplayHandler{
         
         console.log(this.secondDisplay.location);
         
+        if(this.displayBingoCalls){
+            
+            let $bingoCallDiv = this.secondDisplay.document.createElement("div");
+            $bingoCallDiv.id = "bingoCalls";
+            $bingoCallDiv.style = "font-size:200px;text-align:center;padding:3% 0;font-family:sans-serif";
+            this.secondDisplay.document.body.append($bingoCallDiv);
+            
+        }
+        
         if(this.displayBingoDiagrams){
             
             let $bingoDiagDiv = this.secondDisplay.document.createElement("div");
@@ -36,9 +45,16 @@ export class secondDisplayHandler{
         if(this.displayTransliteratedString){
             let $transStringDiv = this.secondDisplay.document.createElement("div");
             $transStringDiv.id = "transliteratedStrings";
-            $transStringDiv.style = "font-size:72px;text-align:center;padding:5% 0;font-family:sans-serif";
+            $transStringDiv.style = "font-size:90px;text-align:center;padding:3% 0;font-family:sans-serif";
             this.secondDisplay.document.body.append($transStringDiv);
         }
+    }
+    
+    UpdateBingoCalls(header,content){
+        
+        if(!this.displayBingoCalls) return
+        
+        this.secondDisplay.document.getElementById("bingoCalls").innerHTML = header + " " + content;
     }
     
     UpdateTransliteratedString(content){
@@ -136,5 +152,12 @@ export class secondDisplayHandler{
         
         this.displayBingoDiagrams = true;
         this.secondWindowHasDisplayedElements = true;
+    }
+    
+    SetToDisplayBingoCall(){
+        
+        this.displayBingoCalls = true;
+        this.secondWindowHasDisplayedElements = true;
+        
     }
 }
