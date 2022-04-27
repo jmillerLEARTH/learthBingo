@@ -77,7 +77,7 @@ export class gameHandler {
     
         this.uiHandler.DisplayGameSettingsPage();
         
-        console.log(window.location);
+        //console.log(window.location);
     }
     
     ProceedToCalls(){

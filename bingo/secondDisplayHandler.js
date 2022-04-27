@@ -19,7 +19,7 @@ export class secondDisplayHandler{
         
         //this.secondDisplay.gameHandler.uiHandler = {...this.uiHandlerOwner};
         
-        this.CreateBingoDiagramsMenu(document);
+        this.CreateBingoDiagramsMenu();
     }
     
     InitializeSecondDisplay(doc){
@@ -76,36 +76,41 @@ export class secondDisplayHandler{
         this.secondDisplay.document.getElementById("transliteratedStrings").innerHTML = content;
     }
     
-    CreateBingoDiagramsMenu(doc){
+    CreateBingoDiagramsMenu(){
         
         if(!this.displayBingoDiagrams) return
         
-        let $diagMenuDiv = doc.createElement("div");
+        let $diagMenuDiv = document.createElement("div");
         $diagMenuDiv.id = "diagMenu";
         $diagMenuDiv.style = "z-index:200;float:left;position:absolute;left: 5%";
         $diagMenuDiv.setAttribute('data-expandedBool', false);
         
-        let $diagMenuButton = doc.createElement("button");
+        let $diagMenuButton = document.createElement("button");
         $diagMenuButton.id = "diagMenuButton";
         $diagMenuButton.innerHTML = "Display Bingo Diagrams";
         
-        doc.body.prepend($diagMenuDiv);
+        document.body.prepend($diagMenuDiv);
         $diagMenuDiv.append($diagMenuButton);
         
         document.body.addEventListener( 'click', function ( event ) {
             if( event.target.id == "diagMenuButton" ) {
-                window.gameHandler.uiHandler.secondDisplayHandler._ExpandBingoDiagramMenu(doc,$diagMenuButton);
+                window.gameHandler.uiHandler.secondDisplayHandler._ExpandBingoDiagramMenu($diagMenuButton);
                 };
             } );
     }
     
-    _ExpandBingoDiagramMenu(doc,button){
+    _CreateBingoDiagButton(){
         
-        const $div = doc.getElementById("diagMenu");
+        
+    }
+    
+    _ExpandBingoDiagramMenu(button){
+        
+        const $div = document.getElementById("diagMenu");
         
         if($div.getAttribute("data-expandedBool") == "false"){
                     
-            let $button0 = doc.createElement("button");
+            let $button0 = document.createElement("button");
             $button0.id = "acrossBingo";
             $button0.innerHTML = "Across Bingo";
             
@@ -113,7 +118,7 @@ export class secondDisplayHandler{
             $div.innerHTML = $div.innerHTML + "<br>";
             $div.append($button0);
             
-            doc.body.addEventListener( 'click', function ( event ) {
+            document.body.addEventListener( 'click', function ( event ) {
             if( event.target.id == "acrossBingo" ) {
                 window.gameHandler.uiHandler.secondDisplayHandler.UpdateBingoDiagrams("acrossBingo");
                 };
@@ -122,9 +127,9 @@ export class secondDisplayHandler{
         }
         else{
             
-            doc.getElementById("diagMenu").innerHTML = "";
-            doc.getElementById("diagMenu").append(button);
-            doc.getElementById("diagMenu").setAttribute('data-expandedBool', false);
+            document.getElementById("diagMenu").innerHTML = "";
+            document.getElementById("diagMenu").append(button);
+            document.getElementById("diagMenu").setAttribute('data-expandedBool', false);
         }
         
     }
