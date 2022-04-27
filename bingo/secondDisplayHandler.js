@@ -64,7 +64,7 @@ export class secondDisplayHandler{
         
         if(!this.displayBingoCalls) return
         
-        console.log(this.secondDisplay.document.body);
+        //console.log(this.secondDisplay.document.body);
         
         this.secondDisplay.document.getElementById("bingoCalls").innerHTML = header + " " + content;
     }
