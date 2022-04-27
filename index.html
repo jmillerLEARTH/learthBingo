@@ -8,11 +8,15 @@
         import {gameHandler} from '/bingo/bingo.js';
         window.gameHandler = new gameHandler(window.langHandler);
     </script>
+    <script type="module">
+        import {loadIn} from '/bingo/loadIn.js';
+        window.loadIn = loadIn;
+    </script>
     
     <link rel="stylesheet" href="style.css">
 </head>
  
-<body>
+<body onload="window.loadIn()">
     <div id="mainContent">
         <button onclick="gameHandler.StartGame()">Play Bingo!</button>
     </div>

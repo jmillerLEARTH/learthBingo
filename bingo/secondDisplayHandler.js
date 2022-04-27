@@ -11,48 +11,60 @@ export class secondDisplayHandler{
         this.displayBingoDiagrams = false;
     }
     
-    InitializeSecondDisplay(doc){
+    OpenSecondWindow(){
         
         if(!this.secondWindowHasDisplayedElements) return
         
-        this.secondDisplay = window.open();
+        this.secondDisplay = window.open("http://localhost:3000/");
         
-        //THIS IS PART OF SOLUTION
-        //this.secondDisplay = window.open("http://localhost:3000/");
+        //this.secondDisplay.gameHandler.uiHandler = {...this.uiHandlerOwner};
         
-        console.log(this.secondDisplay.location);
+        this.CreateBingoDiagramsMenu(document);
+    }
+    
+    InitializeSecondDisplay(doc){
         
-        if(this.displayBingoCalls){
-            
-            let $bingoCallDiv = this.secondDisplay.document.createElement("div");
-            $bingoCallDiv.id = "bingoCalls";
-            $bingoCallDiv.style = "font-size:200px;text-align:center;padding:3% 0;font-family:sans-serif";
-            this.secondDisplay.document.body.append($bingoCallDiv);
-            
-        }
+        document.body.innerHTML = "";
+        
+        this.displayBingoCalls = window.opener.gameHandler.uiHandler.secondDisplayHandler.displayBingoCalls;
+        this.displayTransliteratedString = window.opener.gameHandler.uiHandler.secondDisplayHandler.displayTransliteratedString;
+        this.displayBingoDiagrams = window.opener.gameHandler.uiHandler.secondDisplayHandler.displayBingoDiagrams;
         
         if(this.displayBingoDiagrams){
             
-            let $bingoDiagDiv = this.secondDisplay.document.createElement("div");
+            let $bingoDiagDiv = document.createElement("div");
             $bingoDiagDiv.id = "bingoDiagrams";
-            $bingoDiagDiv.style = "padding:2%";
-            $bingoDiagDiv.innerHTML = `<img src="bingo/bingoDiagrams/acrossBingo.png">`;
-            this.secondDisplay.document.body.append($bingoDiagDiv);
+            $bingoDiagDiv.style = "padding:1%";
+            //$bingoDiagDiv.innerHTML = `<img src="bingo/bingoDiagrams/acrossBingo.png">`;
+            document.body.append($bingoDiagDiv);
             
-            this.CreateBingoDiagramsMenu(doc);
+        }
+        
+        if(this.displayBingoCalls){
+            
+            let $bingoCallDiv = document.createElement("div");
+            $bingoCallDiv.id = "bingoCalls";
+            $bingoCallDiv.style = "font-size:200px;text-align:center;padding:1.5% 0;font-family:sans-serif";
+            document.body.append($bingoCallDiv);
+            
+            
         }
         
         if(this.displayTransliteratedString){
-            let $transStringDiv = this.secondDisplay.document.createElement("div");
+            let $transStringDiv = document.createElement("div");
             $transStringDiv.id = "transliteratedStrings";
-            $transStringDiv.style = "font-size:90px;text-align:center;padding:3% 0;font-family:sans-serif";
-            this.secondDisplay.document.body.append($transStringDiv);
+            $transStringDiv.style = "font-size:90px;text-align:center;padding:1.5% 0;font-family:sans-serif";
+            document.body.append($transStringDiv);
+            
+            //console.log(this.secondDisplay.document.body);
         }
     }
     
     UpdateBingoCalls(header,content){
         
         if(!this.displayBingoCalls) return
+        
+        console.log(this.secondDisplay.document.body);
         
         this.secondDisplay.document.getElementById("bingoCalls").innerHTML = header + " " + content;
     }
@@ -130,7 +142,7 @@ export class secondDisplayHandler{
         
         //<img src="bingo/bingoDiagrams/acrossBingo.png"></img>
         
-        this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png"><img src="https://drive.google.com/file/d/1Rvj5Nnq6oe2y5-Yz2gzRU9WbLRz-VLSL/view?usp=sharing">`;
+        this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png">`;
         
         //let $displayHTML;
         
