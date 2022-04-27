@@ -9,6 +9,7 @@ export class secondDisplayHandler{
         
         this.displayTransliteratedString = false;
         this.displayBingoDiagrams = false;
+        this.bingoDiagButtons = [];
     }
     
     OpenSecondWindow(){
@@ -89,8 +90,26 @@ export class secondDisplayHandler{
         $diagMenuButton.id = "diagMenuButton";
         $diagMenuButton.innerHTML = "Display Bingo Diagrams";
         
+        let $diagMenuButtonTray = document.createElement("div");
+        $diagMenuButtonTray.id = "diagMenuButtonTray";
+        
+        $diagMenuButtonTray.style.display = "none";
+        
         document.body.prepend($diagMenuDiv);
         $diagMenuDiv.append($diagMenuButton);
+        $diagMenuDiv.append($diagMenuButtonTray);
+        
+        this._CreateBingoDiagButton("Across Bingo","acrossBingo");
+        this._CreateBingoDiagButton("Up and Down Bingo","upanddownBingo");
+        this._CreateBingoDiagButton("Four Corners Bingo", "fourcornersBingo");
+        this._CreateBingoDiagClearButton();
+        
+        for(const butt of this.bingoDiagButtons){
+            
+            butt.style.display = "none";
+        }
+        
+        console.log($diagMenuDiv);
         
         document.body.addEventListener( 'click', function ( event ) {
             if( event.target.id == "diagMenuButton" ) {
@@ -99,8 +118,42 @@ export class secondDisplayHandler{
             } );
     }
     
-    _CreateBingoDiagButton(){
+    _CreateBingoDiagButton(buttonText,fileString){
         
+        const $div = document.getElementById("diagMenuButtonTray");
+        
+        
+        let $button = document.createElement("button");
+        $button.id = fileString;
+        $button.innerHTML = buttonText;
+        $div.append($button);
+        $div.innerHTML = $div.innerHTML + "<br>";
+        
+        document.body.addEventListener( 'click', function ( event ) {
+            if( event.target.id == fileString ) {
+                window.gameHandler.uiHandler.secondDisplayHandler.UpdateBingoDiagrams(fileString);
+                };
+            } );
+        
+        
+    }
+    
+    _CreateBingoDiagClearButton(){
+        
+        const $div = document.getElementById("diagMenuButtonTray");
+        
+        let $button = document.createElement("button");
+        $button.id = "clearDiags";
+        $button.innerHTML = "Clear All Diagrams";
+        $div.append($button)
+        
+        if($div.getAttribute("data-expandedBool") == "false"){ 
+            document.body.addEventListener( 'click', function ( event ) {
+                if( event.target.id == "clearDiags" ) {
+                    window.gameHandler.uiHandler.secondDisplayHandler.UpdateBingoDiagrams("clear");
+                    };
+                } );
+        }
         
     }
     
@@ -108,27 +161,22 @@ export class secondDisplayHandler{
         
         const $div = document.getElementById("diagMenu");
         
-        if($div.getAttribute("data-expandedBool") == "false"){
-                    
-            let $button0 = document.createElement("button");
-            $button0.id = "acrossBingo";
-            $button0.innerHTML = "Across Bingo";
+        if($div.getAttribute("data-expandedBool") == "false"){  
+            
+            console.log("expand");
             
             $div.setAttribute('data-expandedBool', true);
             $div.innerHTML = $div.innerHTML + "<br>";
-            $div.append($button0);
             
-            document.body.addEventListener( 'click', function ( event ) {
-            if( event.target.id == "acrossBingo" ) {
-                window.gameHandler.uiHandler.secondDisplayHandler.UpdateBingoDiagrams("acrossBingo");
-                };
-            } );
+            document.getElementById("diagMenuButtonTray").style.display = "block"
             
         }
         else{
             
-            document.getElementById("diagMenu").innerHTML = "";
-            document.getElementById("diagMenu").append(button);
+            document.getElementById("diagMenuButtonTray").style.display = "none"
+            
+//            document.getElementById("diagMenu").innerHTML = "";
+//            document.getElementById("diagMenu").append(button);
             document.getElementById("diagMenu").setAttribute('data-expandedBool', false);
         }
         
@@ -143,18 +191,18 @@ export class secondDisplayHandler{
 //        
 //        this.secondDisplay.document.getElementById("bingoDiagrams").append($diag);
         
-        let $html = this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML;
+        if(bingoDiagString == "clear"){
+            
+            this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = "";
+        }
         
-        //<img src="bingo/bingoDiagrams/acrossBingo.png"></img>
+        else {
+            
+            let $html = this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML;
         
-        this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png">`;
+            this.secondDisplay.document.getElementById("bingoDiagrams").innerHTML = $html + ` <img src="bingo/bingoDiagrams/` + bingoDiagString + `.png">`;
         
-        //let $displayHTML;
-        
-//        for(const d of diagArr){
-//            
-//            $displayHTML = $displayHTML + ` <img src="bingoDiagrams/"` + d `.png>`;
-//        }
+        }
     }
         
     
