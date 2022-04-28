@@ -147,13 +147,13 @@ export class secondDisplayHandler{
         $button.innerHTML = "Clear All Diagrams";
         $div.append($button)
         
-        if($div.getAttribute("data-expandedBool") == "false"){ 
+        //if($div.getAttribute("data-expandedBool") == "false"){ 
             document.body.addEventListener( 'click', function ( event ) {
                 if( event.target.id == "clearDiags" ) {
                     window.gameHandler.uiHandler.secondDisplayHandler.UpdateBingoDiagrams("clear");
                     };
                 } );
-        }
+        //}
         
     }
     
