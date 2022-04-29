@@ -102,6 +102,7 @@ export class secondDisplayHandler{
         this._CreateBingoDiagButton("Across Bingo","acrossBingo");
         this._CreateBingoDiagButton("Up and Down Bingo","upanddownBingo");
         this._CreateBingoDiagButton("Four Corners Bingo", "fourcornersBingo");
+        this._CreateBingoDiagButton("Diagonal Bingo", "diagBingo");
         this._CreateBingoDiagButton("L Bingo", "lBingo");
         this._CreateBingoDiagButton("Crazy L Bingo", "crazylBingo");
         this._CreateBingoDiagButton("X Bingo", "xBingo");
