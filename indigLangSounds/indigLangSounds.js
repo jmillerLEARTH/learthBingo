@@ -125,13 +125,13 @@ export class langHandler {
         return false
     }
     
-    PlayLangSound(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
+    //DEPRECATED PlayLangSound(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
 
-        let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
-        
-        if($phrase == false) return false
-        
-        $phrase.soundHandler.PlaySounds();
+//        let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
+//        
+//        if($phrase == false) return false
+//        
+//        $phrase.soundHandler.PlaySounds();
                 
     }
     
