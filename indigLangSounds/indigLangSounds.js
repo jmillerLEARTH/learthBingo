@@ -133,7 +133,7 @@ export class langHandler {
 //        
 //        $phrase.soundHandler.PlaySounds();
                 
-    }
+    //}
     
     PlayPhrases(lang,phraseArr,searchByEngLangName=false,searchByEngPhrase=false){
         
@@ -152,6 +152,8 @@ export class langHandler {
         }
         
         PlaySequentialSounds($sounds,this);
+        
+        //debugger;
     }
     
     GetTransliteratedString(lang,phraseArr,searchByEngLangName=false){
