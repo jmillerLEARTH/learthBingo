@@ -22,16 +22,22 @@ export function PlaySequentialSounds(soundPaths,debugLogObject = null){
                 }
                 catch{
                     console.log("fail");
-                    if(debugLogObject != null){
-                        debugLogObject.failedAudioSources.push(audios[i]);
-                        console.warn(debugLogObject.failedAudioSources);
-                    }       
+//                    if(debugLogObject != null){
+//                        debugLogObject.failedAudioSources.push(audios[i]);
+//                        console.warn(debugLogObject.failedAudioSources);
+                    //}       
                 }
             })
+            
+            sessionStorage.failedAudioArray = audios;
+            sessionStorage.failedAudio = audios[i-1];
         }
     }
     
     //console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
     
+    
+    
     audios[0].play();
+    
 }

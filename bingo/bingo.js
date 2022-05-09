@@ -35,7 +35,7 @@ class gameSettingsHandler{
     
     ContinueWithQuickGameSettings(){
         
-        this.AddGameCallLang("cherokee");
+        this.AddGameCallLang("ojibwemowin");
         
         this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,75);
         
@@ -78,6 +78,11 @@ export class gameHandler {
         this.uiHandler.DisplayGameSettingsPage();
         
         //console.log(window.location);
+    }
+    
+    LoadCrashedGame(){
+        
+        
     }
     
     ProceedToCalls(){

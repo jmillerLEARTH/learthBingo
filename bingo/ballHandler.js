@@ -93,13 +93,27 @@ export class ballHandler {
         this.pulledBalls.push(ball);
     }
     
+    StorePulledBall(ball){
+        
+        if(sessionStorage.length == 0){
+            
+            sessionStorage.pulledBalls = 0;
+        }
+        
+        sessionStorage["ball" + String(sessionStorage.pulledBalls)] = ball.callText;
+        
+        sessionStorage.pulledBalls = Number(sessionStorage.pulledBalls) + 1;
+        
+        console.log(sessionStorage);
+    }
+    
     PullBall(forCall=true){
         
         //this._AssignBallSeeds();
         
         let $pulledBall = this.balls.shift();
         
-        //;
+        this.StorePulledBall($pulledBall);
         
         this.pulledBalls.push($pulledBall);
         
