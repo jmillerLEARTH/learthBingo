@@ -151,6 +151,8 @@ export class langHandler {
             }
         }
         
+        console.log($sounds);
+        
         PlaySequentialSounds($sounds,this);
         
         //debugger;

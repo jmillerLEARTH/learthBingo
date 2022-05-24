@@ -113,7 +113,7 @@ export class ballHandler {
         
         let $pulledBall = this.balls.shift();
         
-        this.StorePulledBall($pulledBall);
+        //this.StorePulledBall($pulledBall);
         
         this.pulledBalls.push($pulledBall);
         

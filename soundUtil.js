@@ -1,43 +1,88 @@
-export function PlaySequentialSounds(soundPaths,debugLogObject = null){
-    
-    let audios = [];
-    
-    for(const sp of soundPaths){
+class audioHolder
+{
+    constructor(audioPaths){
         
-        let $audio = new Audio(sp);
-        
-        audios.push($audio);
-        
-        //console.log(audios);
+        this.loaded = 0;
+        this.totalPaths;
+        this.preloadedSounds = [];
     }
     
-    for(let i=0; i<audios.length; i++){
+    PreloadAudio(url) {
+        const $audio = new Audio();
+        // once this file loads, it will call loadedAudio()
+        // the file will be kept by the browser as cache
+
+        const $self = this;    
+
+        $audio.addEventListener('canplaythrough', function(){$self.LoadedAudio()}, false);
+        $audio.src = url;
+        this.preloadedSounds.push($audio);
+    }   
+    
+    LoadedAudio(){
         
-        if(i != 0){
+        console.log("LOADED");
+        console.log(this);
         
-            audios[i-1].addEventListener('ended', function(){
-                
-                try{
-                    audios[i].play();
-                }
-                catch{
-                    console.log("fail");
-//                    if(debugLogObject != null){
-//                        debugLogObject.failedAudioSources.push(audios[i]);
-//                        console.warn(debugLogObject.failedAudioSources);
-                    //}       
-                }
-            })
-            
-            sessionStorage.failedAudioArray = audios;
-            sessionStorage.failedAudio = audios[i-1];
+        this.loaded++;
+        if (this.loaded == this.preloadedSounds.length){
+    	// all have loaded
+    	   this.Init();
         }
     }
+    Init(){
     
-    //console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
+        let audios = this.preloadedSounds;
+
+        for(let i=0; i<audios.length; i++){
+
+            if(i != 0){
+
+                audios[i-1].addEventListener('ended', function(){
+
+                    try{
+                        audios[i].play();
+                    }
+                    catch{
+                        console.log("fail");
+    //                    if(debugLogObject != null){
+    //                        debugLogObject.failedAudioSources.push(audios[i]);
+    //                        console.warn(debugLogObject.failedAudioSources);
+                        //}       
+                    }
+                })
+
+                //sessionStorage.failedAudioArray = audios;
+                //sessionStorage.failedAudio = audios[i-1];
+            }
+        }
+
+        console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
+
+        //debugger
+
+        //audios[0].CreateAndPlayAudio();
+
+        audios[0].play();
+        
+
+    }
+
+ 
+}
+
+export function PlaySequentialSounds(soundPaths,debugLogObject = null){
+    
+    const $audioHolder = new audioHolder();
+    $audioHolder.totalPaths = soundPaths.length;
+    
+    // we start preloading all the audio files
+    for (const snd of soundPaths) {
+        $audioHolder.PreloadAudio(snd);
+    }
+    
+
     
     
-    
-    audios[0].play();
     
 }
