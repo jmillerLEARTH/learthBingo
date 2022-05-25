@@ -57,7 +57,7 @@ class audioHolder
             }
         }
 
-        console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
+        //console.error("I WANT THIS TO LOG FAILED AUDIO SOURCES");
 
         //debugger
 
