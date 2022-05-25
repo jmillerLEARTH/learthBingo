@@ -183,9 +183,25 @@ export class uiHandler {
     
     _ExpandCallMenu(div){
         
+        const $header = div.getAttribute('data-header');
+        
+        const $content = div.getAttribute(`data-content`);
+        
+        if(div.getAttribute("data-expanded") == false || div.getAttribute("data-expanded") == undefined){
+            
+            let $transliteratedString = this._GetTransliteratedStringForEachGameLang($header,$content);
+        
+            div.insertAdjacentHTML("beforeend","<br>");
+        
+            div.append($transliteratedString);
+        
+            div.setAttribute("data-expanded",true);
+            
+        }
+        
         for (const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
          
-            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[div.getAttribute('data-content')],false,true)
+            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$content],false,true)
 
         }
     }
@@ -198,13 +214,33 @@ export class uiHandler {
         
     }
     
-    _CreateNewCallDiv(content){
+    _CreateNewCallDiv(header,content){
         
         let $lastCreatedCallDiv = document.createElement("div");
         $lastCreatedCallDiv.id = "chronCall" + this.currentCallIndex;
+        $lastCreatedCallDiv.setAttribute(`data-header`,header)
         $lastCreatedCallDiv.setAttribute('data-content', content);
         
+        //console.log(content);
+        
         return $lastCreatedCallDiv
+    }
+    
+    _CreateTranslitStringDiv(header,content,callDiv){
+        
+        const $translitDiv = document.createElement("span");
+        $translitDiv.style.height = "200px";
+        $translitDiv.style.width = "200px";
+        $translitDiv.setAttribute(`data-header`,header)
+        $translitDiv.setAttribute('data-content', content);
+        
+        callDiv.append($translitDiv);
+        
+        console.log($translitDiv);
+        
+        console.log($translitDiv.parentElement);
+        
+        return $translitDiv
     }
     
     _CreateNewCallLink(header,content){
@@ -239,29 +275,38 @@ export class uiHandler {
         
         let $html = document.getElementById("previousCalls").innerHTML;
         
-        let $lastCreatedCallDiv = this._CreateNewCallDiv(content);
+        let $lastCreatedCallDiv = this._CreateNewCallDiv(header,content);
+        
+        //$lastCreatedCallDiv.append($translitDiv);
         
         let $lastCreatedCallLink = this._CreateNewCallLink(header,content);
         
         document.getElementById("previousCalls").prepend($lastCreatedCallDiv);
+            
+        $lastCreatedCallDiv.append($lastCreatedCallLink);
+        
+        const $translitDiv = this._CreateTranslitStringDiv(header,content,$lastCreatedCallDiv);
+        
+        // -- Removed this in order to let myself practice. Transliterated string is now only shown when you hit the call button
         
         let $transliteratedString = this._GetTransliteratedStringForEachGameLang(header,content);
         
-        $lastCreatedCallDiv.append($lastCreatedCallLink);
-        
-        $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML +"<br>" + $transliteratedString;
+        //$lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML +"<br>" + $transliteratedString;
         
         this.secondDisplayHandler.UpdateTransliteratedString($transliteratedString);
         
         this.secondDisplayHandler.UpdateBingoCalls(header,content);
         
-        //this._DisplayCallOnSeparateWindow($transliteratedString);
+        this._DisplayCallOnSeparateWindow($transliteratedString);
         
-        $lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML + "<br><br>";
+        //$lastCreatedCallDiv.innerHTML = $lastCreatedCallDiv.innerHTML + "<br><br>";
+        
+        $lastCreatedCallDiv.insertAdjacentHTML("beforeend","<br><br>");
         
         document.body.addEventListener( 'click', function ( event ) {
             if( event.target.id == $lastCreatedCallLink.id ) {
-                window.gameHandler.uiHandler._ExpandCallMenu($lastCreatedCallDiv);
+                console.log($translitDiv);
+                window.gameHandler.uiHandler._ExpandCallMenu($translitDiv);
                 };
             } );
     }
