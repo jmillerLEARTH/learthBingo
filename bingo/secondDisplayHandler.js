@@ -42,6 +42,8 @@ export class secondDisplayHandler{
         this.displayTransliteratedString = window.opener.gameHandler.uiHandler.secondDisplayHandler.displayTransliteratedString;
         this.displayBingoDiagrams = window.opener.gameHandler.uiHandler.secondDisplayHandler.displayBingoDiagrams;
         
+        document.body.append("This is a second display window that will show calls for participants. Please click the other window tab to call the game.");
+        
         if(this.displayBingoDiagrams){
             
             let $bingoDiagDiv = document.createElement("div");
