@@ -80,7 +80,7 @@ export class secondDisplayHandler{
     
     _ClearOpenMessage(){
         
-        this.secondDisplay.document.getElementById("openMessage").innerHTML = "";
+        if(this.secondDisplay.document.getElementById("openMessage") != null) this.secondDisplay.document.getElementById("openMessage").innerHTML = "";
     }
     
     UpdateBingoCalls(header,content){
