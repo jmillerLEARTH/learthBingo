@@ -25,7 +25,7 @@ export class secondDisplayHandler{
         else {
             
             //console.log("redir");
-            this.secondDisplay = window.open("http://localhost:3000/");
+            this.secondDisplay = window.open("./index.html");
             
         }
         
@@ -80,7 +80,7 @@ export class secondDisplayHandler{
     
     _ClearOpenMessage(){
         
-        document.getElementById("openMessage").innerHTML = "";
+        this.secondDisplay.document.getElementById("openMessage").innerHTML = "";
     }
     
     UpdateBingoCalls(header,content){
