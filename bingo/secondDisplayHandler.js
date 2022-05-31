@@ -16,7 +16,16 @@ export class secondDisplayHandler{
         
         if(!this.secondWindowHasDisplayedElements) return
         
-        this.secondDisplay = window.open("http://localhost:3000/");
+        if(window.location.href == "https://jmillerlearth.github.io/learthBingo/"){
+            
+            this.secondDisplay = window.open("https://jmillerlearth.github.io/learthBingo/");
+        }
+        else {
+            
+            console.log("redir");
+            this.secondDisplay = window.open("http://localhost:3000/");
+            
+        }
         
         //this.secondDisplay.gameHandler.uiHandler = {...this.uiHandlerOwner};
         
