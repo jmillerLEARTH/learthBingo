@@ -97,6 +97,8 @@ export class gameHandler {
     
     ProceedToCalls(){
         
+        console.log("proceeded");
+        
         if(confirm("Are you ready to call?")){
             
             //console.log(this);
@@ -107,7 +109,7 @@ export class gameHandler {
     
         else {
         
-            setTimeout(proceedToCalls, 7000);
+            setTimeout(this.gameHandler.ProceedToCalls, 5000);
         
         }
         
