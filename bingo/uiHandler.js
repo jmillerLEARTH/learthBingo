@@ -119,7 +119,7 @@ export class uiHandler {
     
     _SetHeaderHTML(){
         
-        let bingoTableHTML = `<div style="page-break-after: always"><table><tr>`;
+        let bingoTableHTML = `<div style="page-break-after: always;background-color:white"><table><tr>`;
         
         for(var h=0; h < this.gameHandlerOwner.cardHandler.headers.length; h++){
             
