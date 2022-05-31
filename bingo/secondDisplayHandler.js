@@ -24,7 +24,7 @@ export class secondDisplayHandler{
         }
         else {
             
-            console.log("redir");
+            //console.log("redir");
             this.secondDisplay = window.open("http://localhost:3000/");
             
         }
@@ -42,7 +42,11 @@ export class secondDisplayHandler{
         this.displayTransliteratedString = window.opener.gameHandler.uiHandler.secondDisplayHandler.displayTransliteratedString;
         this.displayBingoDiagrams = window.opener.gameHandler.uiHandler.secondDisplayHandler.displayBingoDiagrams;
         
-        document.body.append("This is a second display window that will show calls for participants. Please click the other window tab to call the game.");
+        const $openMessage = document.createElement("span");
+        $openMessage.id = "openMessage";
+        $openMessage.innerHTML = "This is a second display window that will show calls for participants. Please click the other window tab to call the game.";
+        
+        document.body.append($openMessage);
         
         if(this.displayBingoDiagrams){
             
@@ -74,11 +78,16 @@ export class secondDisplayHandler{
         }
     }
     
+    _ClearOpenMessage(){
+        
+        document.getElementById("openMessage").innerHTML = "";
+    }
+    
     UpdateBingoCalls(header,content){
         
         if(!this.displayBingoCalls) return
         
-        //console.log(this.secondDisplay.document.body);
+        this._ClearOpenMessage();
         
         this.secondDisplay.document.getElementById("bingoCalls").innerHTML = header + " " + content;
     }
@@ -87,12 +96,16 @@ export class secondDisplayHandler{
         
         if(!this.displayTransliteratedString) return
         
+        this._ClearOpenMessage();
+        
         this.secondDisplay.document.getElementById("transliteratedStrings").innerHTML = content;
     }
     
     CreateBingoDiagramsMenu(){
         
         if(!this.displayBingoDiagrams) return
+        
+        this._ClearOpenMessage();
         
         let $diagMenuDiv = document.createElement("div");
         $diagMenuDiv.id = "diagMenu";
@@ -205,6 +218,8 @@ export class secondDisplayHandler{
     UpdateBingoDiagrams(bingoDiagString){
         
         if(!this.displayBingoDiagrams) return
+        
+        this._ClearOpenMessage();
         
 //        let $diag = document.createElement("img");
 //        $diag.src = "bingo/bingoDiagrams/acrossBingo.png";
