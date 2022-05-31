@@ -35,7 +35,9 @@ class gameSettingsHandler{
     
     ContinueWithQuickGameSettings(){
         
-        for(const chckbx of document.querySelectorAll("langCheckbox")){
+        console.log(document.querySelectorAll(".langCheckbox"));
+        
+        for(const chckbx of document.querySelectorAll(".langCheckbox")){
             
             if(chckbx.checked){
                 
@@ -43,7 +45,7 @@ class gameSettingsHandler{
             }
         }
         
-        this.AddGameCallLang("ojibwemowin");
+        //this.AddGameCallLang("ojibwemowin");
         
         this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,75);
         

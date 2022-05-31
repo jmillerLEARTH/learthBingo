@@ -22,7 +22,7 @@ export class uiHandler {
         
         const $ojibwemowinChkbx = document.createElement("input");
         $ojibwemowinChkbx.type = "checkbox";
-        $ojibwemowinChkbx.class = "langCheckbox";
+        $ojibwemowinChkbx.classList.add("langCheckbox");
         $ojibwemowinChkbx.setAttribute("data-language","ojibwemowin");
         
         $ojibwemowinChkbxSpan.append($ojibwemowinChkbx);
@@ -35,7 +35,7 @@ export class uiHandler {
         
         const $cherokeeChkbx = document.createElement("input");
         $cherokeeChkbx.type = "checkbox";
-        $cherokeeChkbx.class = "langCheckbox";
+        $cherokeeChkbx.classList.add("langCheckbox");
         $cherokeeChkbx.setAttribute("data-language","cherokee");
         
         $cherokeeChkbxSpan.append($cherokeeChkbx);
@@ -47,7 +47,7 @@ export class uiHandler {
         
         const $startButton = document.createElement("button");
         $startButton.innerHTML = "START";
-        $startButton.addEventListener("click", function(){console.log($gameHandler);$gameHandler.gameSettingsHandler.ContinueWithQuickGameSettings()});
+        $startButton.addEventListener("click", function(){$gameHandler.gameSettingsHandler.ContinueWithQuickGameSettings()});
         
         
         document.getElementById("mainContent").innerHTML += "<br><br>";
