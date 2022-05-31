@@ -1,15 +1,15 @@
 <HTML>
 <head>
     <script type="module" >
-        import {langHandler} from '/indigLangSounds/indigLangSounds.js';
+        import {langHandler} from './indigLangSounds/indigLangSounds.js';
         window.langHandler = new langHandler();
     </script>
     <script type="module" >
-        import {gameHandler} from '/bingo/bingo.js';
+        import {gameHandler} from './bingo/bingo.js';
         window.gameHandler = new gameHandler(window.langHandler);
     </script>
     <script type="module">
-        import {loadIn} from '/bingo/loadIn.js';
+        import {loadIn} from './bingo/loadIn.js';
         window.loadIn = loadIn;
     </script>
     
