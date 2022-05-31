@@ -16,6 +16,8 @@ export class secondDisplayHandler{
         
         if(!this.secondWindowHasDisplayedElements) return
         
+        console.warn(window.location.href);
+        
         if(window.location.href == "https://jmillerlearth.github.io/learthBingo/"){
             
             this.secondDisplay = window.open("https://jmillerlearth.github.io/learthBingo/");
