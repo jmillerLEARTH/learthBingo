@@ -35,7 +35,15 @@ class gameSettingsHandler{
     
     ContinueWithQuickGameSettings(){
         
-        this.AddGameCallLang("cherokee");
+        for(const chckbx of document.querySelectorAll("langCheckbox")){
+            
+            if(chckbx.checked){
+                
+                this.AddGameCallLang(chckbx.getAttribute("data-language"));
+            }
+        }
+        
+        this.AddGameCallLang("ojibwemowin");
         
         this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,75);
         

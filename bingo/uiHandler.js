@@ -13,8 +13,45 @@ export class uiHandler {
     
     DisplayGameSettingsPage(){
         
+        document.getElementById("mainContent").innerHTML = "";
+        
         document.getElementById("mainContent").style = "font-size:26px;margin-top:75px";
-        document.getElementById("mainContent").innerHTML = gameSettingsPageHTMLString;
+        document.getElementById("mainContent").innerHTML += "Game Languages<br><br>";
+        
+        const $ojibwemowinChkbxSpan = document.createElement("span");
+        
+        const $ojibwemowinChkbx = document.createElement("input");
+        $ojibwemowinChkbx.type = "checkbox";
+        $ojibwemowinChkbx.class = "langCheckbox";
+        $ojibwemowinChkbx.setAttribute("data-language","ojibwemowin");
+        
+        $ojibwemowinChkbxSpan.append($ojibwemowinChkbx);
+        $ojibwemowinChkbxSpan.append(" Ojibwemowin");
+        $ojibwemowinChkbxSpan.innerHTML += "<br>";
+        
+        document.getElementById("mainContent").append($ojibwemowinChkbxSpan);
+        
+        const $cherokeeChkbxSpan = document.createElement("span");
+        
+        const $cherokeeChkbx = document.createElement("input");
+        $cherokeeChkbx.type = "checkbox";
+        $cherokeeChkbx.class = "langCheckbox";
+        $cherokeeChkbx.setAttribute("data-language","cherokee");
+        
+        $cherokeeChkbxSpan.append($cherokeeChkbx);
+        $cherokeeChkbxSpan.append(" Cherokee");
+        
+        document.getElementById("mainContent").append($cherokeeChkbxSpan);
+        
+        const $gameHandler = this.gameHandlerOwner;
+        
+        const $startButton = document.createElement("button");
+        $startButton.innerHTML = "START";
+        $startButton.addEventListener("click", function(){console.log($gameHandler);$gameHandler.gameSettingsHandler.ContinueWithQuickGameSettings()});
+        
+        
+        document.getElementById("mainContent").innerHTML += "<br><br>";
+        document.getElementById("mainContent").append($startButton);
     }
     
     DisplayCardPrintPage(){
