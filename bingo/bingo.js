@@ -49,7 +49,7 @@ class gameSettingsHandler{
         
         this.gameHandlerOwner.ballHandler.LoadBallsXToY(1,75);
         
-        this.gameHandlerOwner.cardHandler.SetHeaders("Bear","Deer","Marten","Loon","Bird");
+        this.gameHandlerOwner.cardHandler.SetHeaders("B","I","N","G","O");
         
         this.gameHandlerOwner.cardHandler.GenerateCards(3);
         

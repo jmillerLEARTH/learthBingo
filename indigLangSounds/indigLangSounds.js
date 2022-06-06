@@ -180,7 +180,7 @@ export class langHandler {
     
     GetSoundPaths(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
         
-        let $phrase = this._FindMatchingPhrase(lang,String(phrase).toLowerCase(),searchByEngLangName,searchByEngPhrase);
+        let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
         
         if($phrase == false) return false
         
@@ -198,12 +198,9 @@ export class langHandler {
     
     GetPhrase(lang,phrase,searchByEngLangName=false,searchByEngPhrase=false){
         
-        let $phrase = this._FindMatchingPhrase(lang,String(phrase).toLowerCase(),searchByEngLangName,searchByEngPhrase);
-        
-        console.log($phrase);
+        let $phrase = this._FindMatchingPhrase(lang,phrase,searchByEngLangName,searchByEngPhrase);
         
         if($phrase != false) return $phrase.phrase;
-        else if(typeof phrase != "number" && phrase.length > 1) console.warn("GetPhrase() failed for " + phrase);
         else return false
     }
 }

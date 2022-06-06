@@ -238,7 +238,7 @@ export class uiHandler {
         
         for (const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
          
-            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$header,$content],false,true)
+            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$content],false,true)
 
         }
     }
