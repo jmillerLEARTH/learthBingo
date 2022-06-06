@@ -131,12 +131,13 @@ export class ballHandler {
         
         this.owner.uiHandler.UpdateCallPage(ball.headerIndex,ball.header,ball.callText);
         
-        for (const l of this.owner.gameSettingsHandler.gameCallLangs){
-         
-            if(this.owner.gameSettingsHandler.playAudioCalls){
-                this.owner.audioCallLibrary.PlayPhrases(l,[ball.header,ball.callText],false,true)
-            }
-        }
+//        for (const l of this.owner.gameSettingsHandler.gameCallLangs){
+//         
+//            if(this.owner.gameSettingsHandler.playAudioCalls){
+//                console.log(ball);
+//                this.owner.audioCallLibrary.PlayPhrases(l,[ball.header,ball.callText],false,true)
+//            }
+//        }
         
 //        let $sounds = [];
 //
@@ -162,11 +163,11 @@ export class ballHandler {
 ////                         
 ////                this.owner.audioCallLibrary.PlayLangSound(l,ball.callText,false,true);      
 //        }
-//
-//        //console.log($sounds);
-//        
-//        if(this.owner.gameSettingsHandler.playAudioCalls){    
-//            PlaySequentialSounds($sounds,this.owner);
-//        }   
+////
+////        //console.log($sounds);
+////        
+////        if(this.owner.gameSettingsHandler.playAudioCalls){    
+////            PlaySequentialSounds($sounds,this.owner);
+////        }   
     }
 }
