@@ -58,16 +58,50 @@ export class uiHandler {
         
         let $displayHTML = "";
         
+        let $cardCount = 0;
+        
         for(const ca of this.gameHandlerOwner.cardHandler.cards){
             
-            $displayHTML = $displayHTML + this._SetHeaderHTML();
+            const $cardModulus = $cardCount % 2;
+            
+            if($cardModulus == 0){
+                
+                $displayHTML += `<div style="display: grid;
+                    justify-items: center;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 5px;
+                    grid-template-columns: auto auto;
+                    page-break-after: always">`
+            }
+            
+            $displayHTML = $displayHTML + this._SetHeaderHTML($cardModulus);
             
             $displayHTML = $displayHTML + this._SetRowsHTML(ca);
             
             $displayHTML = $displayHTML + "</tbody></table></div>";
+            
+            if($cardModulus != 0) $displayHTML += "</div>"
+            
+            $cardCount++;
         }
         
+//        const $gridDisplayDiv = document.createElement("div");
+//        $gridDisplayDiv.style = `display: grid;
+//            justify-items: center;
+//            align-items: center;
+//            gap: 10px;
+//            padding: 5px;`;
+        
+//        $gridDisplayDiv.style.gridTemplateColumns = "auto auto";
+        
         document.getElementById("mainContent").innerHTML = $displayHTML;
+        
+//        document.getElementById("mainContent").append($gridDisplayDiv);
+        
+//        $gridDisplayDiv.insertAdjacentHTML("beforeend",$displayHTML);
+        
+        //document.getElementById("mainContent").innerHTML = $displayHTML;
         
         setTimeout(this.gameHandlerOwner.ProceedToCalls, 150);
     }
@@ -109,7 +143,7 @@ export class uiHandler {
         
         if(String(content).length <= 3){
             
-            return 90;
+            return 55;
         }
         else{
             
@@ -117,9 +151,11 @@ export class uiHandler {
         }
     }
     
-    _SetHeaderHTML(){
+    _SetHeaderHTML(cardModulus){
         
-        let bingoTableHTML = `<div style="page-break-after: always;background-color:white"><table><tr>`;
+        let bingoTableHTML 
+        if(cardModulus ==0) bingoTableHTML = `<div style="background-color:white"><table><tr>`
+        else bingoTableHTML = `<div style="background-color:white"><table><tr>`
         
         for(var h=0; h < this.gameHandlerOwner.cardHandler.headers.length; h++){
             
