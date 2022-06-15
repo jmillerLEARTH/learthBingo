@@ -281,7 +281,7 @@ export class uiHandler {
         
         for (const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
          
-            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$content],false,true)
+            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$content],false);
 
         }
     }
@@ -385,7 +385,7 @@ export class uiHandler {
         
         document.body.addEventListener( 'click', function ( event ) {
             if( event.target.id == $lastCreatedCallLink.id ) {
-                console.log($translitDiv);
+            
                 window.gameHandler.uiHandler._ExpandCallMenu($translitDiv);
                 };
             } );
