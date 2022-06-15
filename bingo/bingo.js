@@ -82,8 +82,6 @@ export class gameHandler {
     }
     
     StartGame(){
-        
-        this.audioCallLibrary.InitiateLangs();
     
         this.uiHandler.DisplayGameSettingsPage();
         

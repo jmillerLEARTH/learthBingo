@@ -1,0 +1,24 @@
+<HTML>
+<head>
+    <script type="module" >
+        import {langHandler} from './../indigLangSounds/indigLangSounds.js';
+        window.langHandler = new langHandler();
+    </script>
+    <script type="module" >
+        import {gameHandler} from './bingo/bingo.js';
+        window.gameHandler = new gameHandler(window.langHandler);
+    </script>
+    <script type="module">
+        import {loadIn} from './bingo/loadIn.js';
+        window.loadIn = loadIn;
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+ 
+<body onload="window.loadIn()" style="background-color:F6FFE4">
+    <div id="mainContent">
+        <button onclick="gameHandler.StartGame()">Play Bingo!</button>
+    </div>
+</body>
+</HTML>
