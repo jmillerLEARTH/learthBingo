@@ -281,7 +281,7 @@ export class uiHandler {
         
         for (const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
          
-            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$content],false);
+            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$content],true);
 
         }
     }
@@ -338,7 +338,13 @@ export class uiHandler {
         
         for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
             
-            $transliteratedString = $transliteratedString + this.gameHandlerOwner.audioCallLibrary.GetTransliteratedString(l,[header,content]);
+            let $stringHeaderPart = this.gameHandlerOwner.audioCallLibrary.FindMatchingPhrase(l,[header],true).phrase
+            
+            if($stringHeaderPart != undefined) $transliteratedString += $stringHeaderPart + " ";
+            
+            let $stringContentPart = this.gameHandlerOwner.audioCallLibrary.FindMatchingPhrase(l,[content],true).phrase
+            
+            if($stringContentPart != undefined) $transliteratedString += $stringContentPart + " ";
             
             // will display name of each language in parentheses after transliteration IFF there are multiple game call languages
             
