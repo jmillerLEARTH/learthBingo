@@ -148,8 +148,14 @@ export class uiHandler {
             
             const $firstGameLang = this.gameHandlerOwner.gameSettingsHandler.gameCallLangs[0];
             
-            let $transliteratedString = this.gameHandlerOwner.audioCallLibrary.GetTransliteratedString($firstGameLang,[$thisHeader],true);
-            console.log($transliteratedString);
+            
+            let $phraseObj = this.gameHandlerOwner.audioCallLibrary.FindMatchingPhrase($firstGameLang,[$thisHeader],true);
+
+            
+            let $transliteratedString = $phraseObj.phrase;
+            
+            
+            if($transliteratedString == undefined) $transliteratedString = "";
             
             bingoTableHTML = bingoTableHTML + "<th>" + $thisHeader +"<br>" + $transliteratedString + "</th>";
             
