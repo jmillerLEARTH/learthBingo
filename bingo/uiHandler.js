@@ -86,22 +86,7 @@ export class uiHandler {
             $cardCount++;
         }
         
-//        const $gridDisplayDiv = document.createElement("div");
-//        $gridDisplayDiv.style = `display: grid;
-//            justify-items: center;
-//            align-items: center;
-//            gap: 10px;
-//            padding: 5px;`;
-        
-//        $gridDisplayDiv.style.gridTemplateColumns = "auto auto";
-        
         document.getElementById("mainContent").innerHTML = $displayHTML;
-        
-//        document.getElementById("mainContent").append($gridDisplayDiv);
-        
-//        $gridDisplayDiv.insertAdjacentHTML("beforeend",$displayHTML);
-        
-        //document.getElementById("mainContent").innerHTML = $displayHTML;
         
         setTimeout(this.gameHandlerOwner.ProceedToCalls, 150);
     }
