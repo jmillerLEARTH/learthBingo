@@ -157,7 +157,7 @@ export class uiHandler {
             
             if($transliteratedString == undefined) $transliteratedString = "";
             
-            bingoTableHTML = bingoTableHTML + "<th>" + $thisHeader +"<br>" + $transliteratedString + "</th>";
+            bingoTableHTML = bingoTableHTML + "<th>" + $thisHeader +"<br><div class='cardHeaderTranslitString'>" + $transliteratedString + "</div></th>";
             
         }
         
@@ -185,7 +185,7 @@ export class uiHandler {
                         
                         let $size = String(this._GetContentSize($con));
                         
-                        $displayHTML = $displayHTML + `<td style="font-size:` + $size +`px">`+$con+"</td>";
+                        $displayHTML = $displayHTML + `<td style="font-size:` + $size +`px"><div class='tdClass'>`+$con+"</div></td>";
                     }
                 }
             }

@@ -2,8 +2,7 @@ table, th, td {
   border: 1px solid black;
 }
 td {
-    height: 85px;
-    width: 85px;
+
     text-align: center;
     vertical-align: middle;
 }
@@ -18,4 +17,19 @@ body {
     font-family: sans-serif;
     text-align: center;
     
+}
+
+.tdClass{
+    
+    position:relative;
+    height: 100px;
+    width: 100px;
+    top:20px;
+}
+
+.cardHeaderTranslitString{
+    
+    font-size:calc(3px + 75%);
+    word-break: break-all;
+    width:100px;
 }
