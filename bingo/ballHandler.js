@@ -130,13 +130,13 @@ export class ballHandler {
     CallBall(ball){
         
         this.owner.uiHandler.UpdateCallPage(ball.headerIndex,ball.header,ball.callText);
-        
-        for (const l of this.owner.gameSettingsHandler.gameCallLangs){
-         
-            if(this.owner.gameSettingsHandler.playAudioCalls){
-                this.owner.audioCallLibrary.PlayPhrases(l,[ball.header,ball.callText],false,true)
-            }
-        }
+//        
+//        for (const l of this.owner.gameSettingsHandler.gameCallLangs){
+//         
+//            if(this.owner.gameSettingsHandler.playAudioCalls){
+//                this.owner.audioCallLibrary.PlayPhrases(l,[ball.header,ball.callText],false,true)
+//            }
+        //}
         
 //        let $sounds = [];
 //
