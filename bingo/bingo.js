@@ -51,7 +51,7 @@ class gameSettingsHandler{
         
         this.gameHandlerOwner.cardHandler.SetHeaders("B","I","N","G","O");
         
-        this.gameHandlerOwner.cardHandler.GenerateCards(3);
+        this.gameHandlerOwner.cardHandler.GenerateCards(40);
         
         this.gameHandlerOwner.uiHandler.DisplayCardPrintPage();
         
