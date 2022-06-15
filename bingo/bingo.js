@@ -51,7 +51,7 @@ class gameSettingsHandler{
         
         this.gameHandlerOwner.cardHandler.SetHeaders("Bear","Deer","Marten","Loon","Bird");
         
-        this.gameHandlerOwner.cardHandler.GenerateCards(80);
+        this.gameHandlerOwner.cardHandler.GenerateCards(40);
         
         this.gameHandlerOwner.uiHandler.DisplayCardPrintPage();
         

@@ -162,6 +162,8 @@ export class langHandler {
         
         let $strings = [];
         
+        if(!Array.isArray(phraseArr)) phraseArr = [phraseArr];
+        
         for(let i = 0; i < phraseArr.length; i++){
             
             let $searchKey = phraseArr[i];

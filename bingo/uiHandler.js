@@ -155,11 +155,18 @@ export class uiHandler {
         
         let bingoTableHTML 
         if(cardModulus ==0) bingoTableHTML = `<div style="background-color:white"><table><tr>`
-        else bingoTableHTML = `<div style="background-color:white"><table><tr>`
+        else bingoTableHTML = `<div style="background-color:white"><table><tr>`;
         
         for(var h=0; h < this.gameHandlerOwner.cardHandler.headers.length; h++){
             
-            bingoTableHTML = bingoTableHTML + "<th>" + this.gameHandlerOwner.cardHandler.headers[h] +"</th>";
+            let $thisHeader = this.gameHandlerOwner.cardHandler.headers[h];
+            
+            const $firstGameLang = this.gameHandlerOwner.gameSettingsHandler.gameCallLangs[0];
+            
+            let $transliteratedString = this.gameHandlerOwner.audioCallLibrary.GetTransliteratedString($firstGameLang,[$thisHeader],true);
+            console.log($transliteratedString);
+            
+            bingoTableHTML = bingoTableHTML + "<th>" + $thisHeader +"<br>" + $transliteratedString + "</th>";
             
         }
         
