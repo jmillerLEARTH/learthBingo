@@ -30,6 +30,7 @@ body {
 .cardHeaderTranslitString{
     
     font-size:calc(3px + 75%);
+    font-style:italic;
     word-break: break-all;
     width:100px;
 }
