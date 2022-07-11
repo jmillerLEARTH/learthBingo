@@ -27,6 +27,12 @@ body {
     top:20px;
 }
 
+.tdCenterSpace{
+    
+    font-size: 32px;
+    margin-top:20px;
+}
+
 .cardHeaderTranslitString{
     
     font-size:calc(3px + 75%);

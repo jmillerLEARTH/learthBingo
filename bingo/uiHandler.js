@@ -88,7 +88,17 @@ export class uiHandler {
         
         document.getElementById("mainContent").innerHTML = $displayHTML;
         
+        this._InsertFreeSpaces();
+        
         setTimeout(this.gameHandlerOwner.ProceedToCalls, 150);
+    }
+    
+    _InsertFreeSpaces(){
+        
+        for(const elem of document.getElementsByClassName("tdCenterSpace")){
+            
+            elem.innerText = "FREE";
+        }
     }
     
     _GetLongestWordLength(string){
@@ -185,7 +195,14 @@ export class uiHandler {
                         
                         let $size = String(this._GetContentSize($con));
                         
-                        $displayHTML = $displayHTML + `<td style="font-size:` + $size +`px"><div class='tdClass'>`+$con+"</div></td>";
+                        let $centerContentClass = "";
+                        
+                        if(x==2 && y==2){
+                            
+                            $centerContentClass = " tdCenterSpace";
+                        }
+                        
+                        $displayHTML = $displayHTML + `<td style="font-size:` + $size +`px"><div class='tdClass${$centerContentClass}'>`+$con+"</div></td>";
                     }
                 }
             }
