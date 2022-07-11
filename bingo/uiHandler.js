@@ -86,24 +86,19 @@ export class uiHandler {
             $cardCount++;
         }
         
-//        const $gridDisplayDiv = document.createElement("div");
-//        $gridDisplayDiv.style = `display: grid;
-//            justify-items: center;
-//            align-items: center;
-//            gap: 10px;
-//            padding: 5px;`;
-        
-//        $gridDisplayDiv.style.gridTemplateColumns = "auto auto";
-        
         document.getElementById("mainContent").innerHTML = $displayHTML;
         
-//        document.getElementById("mainContent").append($gridDisplayDiv);
-        
-//        $gridDisplayDiv.insertAdjacentHTML("beforeend",$displayHTML);
-        
-        //document.getElementById("mainContent").innerHTML = $displayHTML;
+        this._InsertFreeSpaces();
         
         setTimeout(this.gameHandlerOwner.ProceedToCalls, 150);
+    }
+    
+    _InsertFreeSpaces(){
+        
+        for(const elem of document.getElementsByClassName("tdCenterSpace")){
+            
+            elem.innerText = "FREE";
+        }
     }
     
     _GetLongestWordLength(string){
@@ -163,10 +158,16 @@ export class uiHandler {
             
             const $firstGameLang = this.gameHandlerOwner.gameSettingsHandler.gameCallLangs[0];
             
-            let $transliteratedString = this.gameHandlerOwner.audioCallLibrary.GetTransliteratedString($firstGameLang,[$thisHeader],true);
-            console.log($transliteratedString);
             
-            bingoTableHTML = bingoTableHTML + "<th>" + $thisHeader +"<br>" + $transliteratedString + "</th>";
+            let $phraseObj = this.gameHandlerOwner.audioCallLibrary.FindMatchingPhrase($firstGameLang,[$thisHeader],true);
+
+            
+            let $transliteratedString = $phraseObj.phrase;
+            
+            
+            if($transliteratedString == undefined) $transliteratedString = "";
+            
+            bingoTableHTML = bingoTableHTML + "<th>" + $thisHeader +"<br><div class='cardHeaderTranslitString'>" + $transliteratedString + "</div></th>";
             
         }
         
@@ -194,7 +195,14 @@ export class uiHandler {
                         
                         let $size = String(this._GetContentSize($con));
                         
-                        $displayHTML = $displayHTML + `<td style="font-size:` + $size +`px">`+$con+"</td>";
+                        let $centerContentClass = "";
+                        
+                        if(x==2 && y==2){
+                            
+                            $centerContentClass = " tdCenterSpace";
+                        }
+                        
+                        $displayHTML = $displayHTML + `<td style="font-size:` + $size +`px"><div class='tdClass${$centerContentClass}'>`+$con+"</div></td>";
                     }
                 }
             }
@@ -281,7 +289,7 @@ export class uiHandler {
         
         for (const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
          
-            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$header,$content],false,true)
+            this.gameHandlerOwner.audioCallLibrary.PlayPhrases(l,[$header,$content],true);
 
         }
     }
@@ -338,7 +346,13 @@ export class uiHandler {
         
         for(const l of this.gameHandlerOwner.gameSettingsHandler.gameCallLangs){
             
-            $transliteratedString = $transliteratedString + this.gameHandlerOwner.audioCallLibrary.GetTransliteratedString(l,[header,content]);
+            let $stringHeaderPart = this.gameHandlerOwner.audioCallLibrary.FindMatchingPhrase(l,[header],true).phrase
+            
+            if($stringHeaderPart != undefined) $transliteratedString += $stringHeaderPart + " ";
+            
+            let $stringContentPart = this.gameHandlerOwner.audioCallLibrary.FindMatchingPhrase(l,[content],true).phrase
+            
+            if($stringContentPart != undefined) $transliteratedString += $stringContentPart + " ";
             
             // will display name of each language in parentheses after transliteration IFF there are multiple game call languages
             
@@ -385,7 +399,7 @@ export class uiHandler {
         
         document.body.addEventListener( 'click', function ( event ) {
             if( event.target.id == $lastCreatedCallLink.id ) {
-                console.log($translitDiv);
+            
                 window.gameHandler.uiHandler._ExpandCallMenu($translitDiv);
                 };
             } );
